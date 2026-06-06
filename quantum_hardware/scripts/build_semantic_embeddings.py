@@ -71,7 +71,7 @@ def text_hash(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
-def load_sentence_transformer(model_name: str):
+def load_sentence_transformer(model_name: str, low_memory: bool):
     try:
         from sentence_transformers import SentenceTransformer
     except ImportError as exc:
@@ -79,6 +79,9 @@ def load_sentence_transformer(model_name: str):
             "sentence-transformers is required for real local embeddings. "
             "Install quantum_hardware/requirements-embeddings.txt first."
         ) from exc
+    model_kwargs = {"low_cpu_mem_usage": True} if low_memory else None
+    if model_kwargs:
+        return SentenceTransformer(model_name, model_kwargs=model_kwargs)
     return SentenceTransformer(model_name)
 
 
@@ -103,6 +106,7 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--include-clusters", action="store_true")
     parser.add_argument("--normalize", action="store_true", default=True)
+    parser.add_argument("--low-memory", action="store_true", help="Load transformer weights with lower peak RAM usage.")
     args = parser.parse_args()
 
     payload = load_payload(args.input)
@@ -131,7 +135,7 @@ def main() -> None:
         if not clusters:
             all_texts.append(combined)
 
-    model = load_sentence_transformer(args.model)
+    model = load_sentence_transformer(args.model, args.low_memory)
     vectors = encode_texts(model, all_texts, batch_size=args.batch_size, normalize=args.normalize)
     event_embedding = l2_normalize(vectors[0])
 

@@ -163,14 +163,13 @@ def extract_weekly_pestel(snapshot_id: str, label: str, snapshot: dict[str, Any]
     for index, node in enumerate(nodes):
         node_id = int(node.get("id", index))
         text = strip_html(node.get("text", ""))
-        if len(sample_clusters) < 12:
-            sample_clusters.append(
-                {
-                    "id": node_id,
-                    "clusterSize": cluster_sizes[node_id] if node_id < len(cluster_sizes) else None,
-                    "text": text[:320],
-                }
-            )
+        sample_clusters.append(
+            {
+                "id": node_id,
+                "clusterSize": cluster_sizes[node_id] if node_id < len(cluster_sizes) else None,
+                "text": text[:1200],
+            }
+        )
         token_counts = Counter(tokens(text))
         cluster_size = float(cluster_sizes[node_id] if node_id < len(cluster_sizes) else cluster_sizes[index] if index < len(cluster_sizes) else 1)
         volume = clamp(math.log1p(cluster_size) / math.log1p(max_size))
