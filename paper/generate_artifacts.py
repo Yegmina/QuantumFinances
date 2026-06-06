@@ -59,8 +59,12 @@ def plot_pestel(payload: dict[str, Any]) -> None:
     for key, color in zip(PESTEL_KEYS, colors, strict=True):
         values = [percent((item.get("pestel") or {}).get(key, 0.0)) for item in payload.get("weeklyPestelSeries", [])]
         plt.plot(x, values, marker="o", linewidth=2.2, label=key.title(), color=color)
-    plt.xticks(x, weeks)
-    plt.ylim(0, 70)
+    tick_step = max(1, len(weeks) // 8)
+    tick_positions = x[::tick_step]
+    if len(tick_positions) == 0 or tick_positions[-1] != x[-1]:
+        tick_positions = np.append(tick_positions, x[-1])
+    plt.xticks(tick_positions, [weeks[int(index)] for index in tick_positions], rotation=35, ha="right")
+    plt.ylim(0, 100)
     plt.ylabel("Normalized vector value (%)")
     plt.title("Weekly PESTEL World-State Vectors")
     plt.grid(True, axis="y", alpha=0.25)
@@ -264,7 +268,12 @@ def plot_semantic_embedding_shots() -> None:
         return
     dims = sorted({int(item.get("latentDim") or 0) for item in records})
     plt.figure(figsize=(8.8, 4.6))
-    for shots, color, marker in [(512, "#174A7C", "o"), (1024, "#287D56", "s")]:
+    shot_values = sorted({int(item.get("shots") or 0) for item in records if int(item.get("shots") or 0) > 0})
+    colors = ["#174A7C", "#287D56", "#C7502B", "#777777"]
+    markers = ["o", "s", "^", "d"]
+    for index, shots in enumerate(shot_values):
+        color = colors[index % len(colors)]
+        marker = markers[index % len(markers)]
         values = []
         for dim in dims:
             selected = [item for item in records if int(item.get("latentDim") or 0) == dim and int(item.get("shots") or 0) == shots]
@@ -282,7 +291,7 @@ def plot_semantic_embedding_shots() -> None:
     plt.xlabel("Latent qubits")
     plt.ylabel("Mean event-aligned probability (%)")
     plt.title("Event-Aligned Signal Across Semantic QML Circuit Sizes")
-    plt.ylim(20, 40)
+    plt.ylim(25, 35)
     plt.grid(True, axis="y", alpha=0.25)
     plt.legend()
     plt.tight_layout()
