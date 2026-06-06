@@ -7,9 +7,10 @@ QuantumFinances can run from bundled sample snapshots or from a configured exter
 ## Structure
 
 ```text
-backend/   FastAPI scenario API
-frontend/  Vue 3 platform UI
-docs/      runbook and hardware notes
+backend/           FastAPI scenario API
+frontend/          Vue 3 platform UI
+docs/              runbook and platform notes
+quantum_hardware/  IBM/IQM/QMill hardware preparation scripts
 ```
 
 ## Backend
@@ -68,3 +69,15 @@ cd ..\frontend
 npm run test
 npm run build
 ```
+
+## Quantum Hardware Preparation
+
+The `quantum_hardware/` folder prepares real provider runs without submitting by default.
+
+```powershell
+cd quantum_hardware
+python .\scripts\prepare_run_payload.py --event "Company becomes the biggest in its market after AI investment and market growth"
+python .\scripts\ibm_sampler_v2_submit.py --input .\inputs\latest_run.json --dry-run
+```
+
+Use `--submit` only when provider credentials are configured and you are ready to spend hardware time.

@@ -2,6 +2,8 @@
 .env.*
 !.env.example
 .venv/
+.venv-ibm/
+.venv-iqm/
 __pycache__/
 .pytest_cache/
 .ruff_cache/
@@ -11,3 +13,8 @@ coverage/
 .playwright-cli/
 *.log
 *.pyc
+quantum_hardware/inputs/latest_run.json
+quantum_hardware/receipts/*
+!quantum_hardware/receipts/.gitkeep
+quantum_hardware/exports/*
+!quantum_hardware/exports/.gitkeep

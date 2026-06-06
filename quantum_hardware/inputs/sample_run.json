@@ -1,0 +1,76 @@
+{
+  "runId": "sample-run",
+  "weeklyPestelSeries": [
+    {
+      "weekId": "2026-W21",
+      "label": "Sample Week 21",
+      "pestel": {
+        "political": 0.47,
+        "economic": 0.47,
+        "social": 0.31,
+        "technological": 0.42,
+        "environmental": 0.43,
+        "legal": 0.41
+      },
+      "graph": {
+        "rawEdges": [[0, 1], [1, 2], [2, 3], [3, 4]]
+      }
+    },
+    {
+      "weekId": "2026-W22",
+      "label": "Sample Week 22",
+      "pestel": {
+        "political": 0.41,
+        "economic": 0.50,
+        "social": 0.40,
+        "technological": 0.43,
+        "environmental": 0.31,
+        "legal": 0.34
+      },
+      "graph": {
+        "rawEdges": [[0, 2], [2, 4], [1, 3]]
+      }
+    },
+    {
+      "weekId": "2026-W23",
+      "label": "Sample Week 23",
+      "pestel": {
+        "political": 0.41,
+        "economic": 0.41,
+        "social": 0.29,
+        "technological": 0.39,
+        "environmental": 0.38,
+        "legal": 0.41
+      },
+      "graph": {
+        "rawEdges": [[0, 1], [1, 3], [2, 5], [4, 5]]
+      }
+    }
+  ],
+  "forecastScenarios": [
+    {
+      "id": "future-1",
+      "probability": 0.25
+    },
+    {
+      "id": "future-2",
+      "probability": 0.30
+    },
+    {
+      "id": "future-3",
+      "probability": 0.25
+    },
+    {
+      "id": "future-4",
+      "probability": 0.20
+    }
+  ],
+  "eventProbability": {
+    "eventText": "Company becomes the biggest in its market after AI investment and market growth",
+    "probability": 0.61
+  },
+  "quantumRun": {
+    "shots": 512
+  }
+}
+

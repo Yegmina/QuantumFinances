@@ -1,0 +1,4 @@
+qiskit>=1.3
+qiskit-iqm
+iqm-client
+
