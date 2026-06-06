@@ -100,10 +100,25 @@ def id_from_manifest_item(item: dict[str, Any], index: int) -> str:
     return str(item.get("label") or f"snapshot-{index + 1}")
 
 
-def build_series_from_manifest_data(manifest: Any, source_label: str, base_url: str, snapshot_kind: str, token: str | None):
+def log(message: str) -> None:
+    print(message, flush=True)
+
+
+def build_series_from_manifest_data(
+    manifest: Any,
+    source_label: str,
+    base_url: str,
+    snapshot_kind: str,
+    token: str | None,
+    snapshot_limit: int | None = None,
+):
     items = graph_items_from_manifest(manifest, snapshot_kind)
     if not items:
         raise SystemExit(f"No {snapshot_kind} snapshots found in {source_label}")
+    if snapshot_limit:
+        items = items[:snapshot_limit]
+
+    log(f"Loaded manifest entries: {len(items)} {snapshot_kind} snapshots from {source_label}")
 
     series = []
     for index, item in enumerate(items):
@@ -114,7 +129,9 @@ def build_series_from_manifest_data(manifest: Any, source_label: str, base_url: 
         else:
             raw_url = str(item.get("value") or item.get("url") or item.get("path"))
             snapshot_url = urljoin(f"{base_url.rstrip('/')}/", raw_url)
+            log(f"[{index + 1}/{len(items)}] Fetching {snapshot_id}: {snapshot_url}")
             snapshot = fetch_json(snapshot_url, token=token)
+        log(f"[{index + 1}/{len(items)}] Extracting PESTEL vector for {snapshot_id}")
         series.append(
             extract_weekly_pestel(
                 snapshot_id=snapshot_id,
@@ -124,12 +141,14 @@ def build_series_from_manifest_data(manifest: Any, source_label: str, base_url: 
             )
         )
     series.sort(key=lambda item: item.weekId)
+    log(f"Built weekly PESTEL series: {len(series)} weeks")
     return series, items
 
 
-def build_series_from_manifest(manifest_url: str, base_url: str, snapshot_kind: str, token: str | None):
+def build_series_from_manifest(manifest_url: str, base_url: str, snapshot_kind: str, token: str | None, snapshot_limit: int | None = None):
+    log(f"Fetching manifest: {manifest_url}")
     manifest = fetch_json(manifest_url, token=token)
-    return build_series_from_manifest_data(manifest, manifest_url, base_url, snapshot_kind, token)
+    return build_series_from_manifest_data(manifest, manifest_url, base_url, snapshot_kind, token, snapshot_limit)
 
 
 def source_connection(snapshot_paths: list[tuple[str, Path]], oracle_dir: Path) -> SourceConnection:
@@ -182,6 +201,7 @@ async def create_run(args: argparse.Namespace) -> RunResponse:
             base_url=args.base_url,
             snapshot_kind=args.snapshot_kind,
             token=token,
+            snapshot_limit=args.snapshot_limit,
         )
         source = remote_source_connection(str(manifest_path), len(manifest_items))
     elif args.manifest_url:
@@ -193,6 +213,7 @@ async def create_run(args: argparse.Namespace) -> RunResponse:
             base_url=args.base_url,
             snapshot_kind=args.snapshot_kind,
             token=token,
+            snapshot_limit=args.snapshot_limit,
         )
         source = remote_source_connection(args.manifest_url, len(manifest_items))
     else:
@@ -210,13 +231,16 @@ async def create_run(args: argparse.Namespace) -> RunResponse:
     )
 
     if args.use_openai:
+        log("Running OpenAI scenario planner")
         settings = get_settings()
         decision, series, scenarios, event_probability = await generate_openai_plan(settings, payload, series)
     else:
+        log("Running deterministic scenario planner")
         decision = deterministic_decision(payload)
         scenarios = forecast_scenarios(series, decision.scenarioCount, decision.seed)
         event_probability = score_event(payload.eventText, scenarios, decision.dimensionWeights, None)
 
+    log("Creating quantum circuit receipt")
     quantum_run = create_quantum_receipt(series, scenarios, decision.shots, decision.seed)
     return RunResponse(
         runId=run_id_for(payload.eventText, series, quantum_run.localRunId),
@@ -249,6 +273,7 @@ def main() -> None:
     parser.add_argument("--manifest-file", help="Local JSON export from the ORACLE /api/snapshots endpoint.")
     parser.add_argument("--base-url", default="https://oraakkeli.metropolia.fi", help="Base URL for manifest snapshot paths.")
     parser.add_argument("--snapshot-kind", choices=["graph", "hierarchy"], default="graph")
+    parser.add_argument("--snapshot-limit", type=int, help="Limit manifest snapshots for a quick connectivity test.")
     parser.add_argument("--auth-token-env", default="ORACLE_AUTH_TOKEN", help="Environment variable containing ORACLE bearer token.")
     parser.add_argument("--require-auth", action="store_true", help="Fail if auth token env var is missing.")
     parser.add_argument("--out", default=str(ROOT / "quantum_hardware" / "inputs" / "latest_run.json"))
@@ -262,6 +287,7 @@ def main() -> None:
     result = asyncio.run(create_run(args))
     output_path = Path(args.out)
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    log(f"Writing payload: {output_path}")
     output_path.write_text(json.dumps(result.model_dump(mode="json"), indent=2, sort_keys=True), encoding="utf-8")
 
     print(f"Wrote ORACLE-derived run payload: {output_path}")
