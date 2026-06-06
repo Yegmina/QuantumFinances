@@ -80,3 +80,52 @@ Total shots & 960 \\
 \caption{Automatic temporal-QML batch summary used for the seed-sensitivity figure.}
 \label{tab:batch-summary}
 \end{table}
+
+\begin{table}[t]
+\centering
+\scriptsize
+\begin{tabular}{lp{0.50\columnwidth}}
+\toprule
+Semantic embedding model & \path{intfloat/multilingual-e5-large-instruct} \\
+Embedding dimension & 1024 \\
+Hardware jobs & 18 \\
+Total hardware shots & 13824 \\
+Latent qubits tested & 8, 10, 12 \\
+\bottomrule
+\end{tabular}
+\caption{Semantic-embedding QML batch configuration.}
+\label{tab:semantic-config}
+\end{table}
+
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{rrrrrrr}
+\toprule
+Qubits & Records & Shots & Stable & Event aligned & Event divergent & Uncertain \\
+\midrule
+8 & 6 & 4608 & 32.3\% & 29.3\% & 19.1\% & 19.2\% \\
+10 & 6 & 4608 & 29.3\% & 27.6\% & 21.8\% & 21.2\% \\
+12 & 6 & 4608 & 32.7\% & 31.4\% & 18.0\% & 17.9\% \\
+\bottomrule
+\end{tabular}
+\caption{Mean IQM Sirius hardware distributions for the 1024-dimensional semantic-embedding QML batch.}
+\label{tab:semantic-batch}
+\end{table*}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+Class & Overall mean \\
+\midrule
+Stable & 31.5\% \\
+Event Aligned & 29.4\% \\
+Event Divergent & 19.7\% \\
+Uncertain & 19.4\% \\
+\bottomrule
+\end{tabular}
+\caption{Aggregate distribution across all semantic-embedding QML hardware jobs.}
+\label{tab:semantic-overall}
+\end{table}

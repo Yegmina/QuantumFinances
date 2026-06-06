@@ -16,6 +16,7 @@ FIGURES = PAPER / "figures"
 DATA = PAPER / "data"
 PESTEL_KEYS = ["political", "economic", "social", "technological", "environmental", "legal"]
 CLASS_KEYS = ["stable", "aligned_up", "aligned_down", "uncertain"]
+SEMANTIC_CLASS_KEYS = ["stable", "event_aligned", "event_divergent", "uncertain"]
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -188,6 +189,106 @@ def plot_batch() -> None:
     plt.close()
 
 
+def semantic_summary_records() -> list[dict[str, Any]]:
+    summary_path = ROOT / "quantum_hardware" / "experiments" / "iqm_semantic_qml_batch_summary.json"
+    if not summary_path.exists():
+        return []
+    return load_json(summary_path).get("records", [])
+
+
+def semantic_probabilities(record: dict[str, Any]) -> dict[str, float]:
+    hardware = record.get("hardwareProbabilities") or {}
+    if hardware:
+        return hardware
+    return record.get("inferenceProbabilities") or {}
+
+
+def semantic_group_stats(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    groups: dict[int, list[dict[str, Any]]] = {}
+    for record in records:
+        if record.get("returnCode") != 0:
+            continue
+        latent_dim = int(record.get("latentDim") or record.get("qubits") or 0)
+        if latent_dim <= 0:
+            continue
+        groups.setdefault(latent_dim, []).append(record)
+    rows = []
+    for latent_dim in sorted(groups):
+        group = groups[latent_dim]
+        means = {}
+        for key in SEMANTIC_CLASS_KEYS:
+            values = [float(semantic_probabilities(item).get(key, 0.0)) for item in group]
+            means[key] = sum(values) / max(1, len(values))
+        rows.append(
+            {
+                "latentDim": latent_dim,
+                "records": len(group),
+                "shots": sum(int(item.get("shots", 0)) for item in group),
+                "mean": means,
+                "depth": int(max(float(item.get("circuitDepth") or 0) for item in group)),
+                "transpiledDepth": int(max(float(item.get("transpiledDepth") or 0) for item in group)),
+            }
+        )
+    return rows
+
+
+def plot_semantic_embedding_batch() -> None:
+    records = semantic_summary_records()
+    stats = semantic_group_stats(records)
+    if not stats:
+        return
+    labels = [f"{item['latentDim']}q" for item in stats]
+    x = np.arange(len(labels))
+    width = 0.18
+    colors = ["#174A7C", "#287D56", "#C7502B", "#777777"]
+    plt.figure(figsize=(9.0, 4.8))
+    for index, (key, color) in enumerate(zip(SEMANTIC_CLASS_KEYS, colors, strict=True)):
+        values = [percent(item["mean"].get(key, 0.0)) for item in stats]
+        plt.bar(x + (index - 1.5) * width, values, width, label=key.replace("_", " ").title(), color=color)
+    plt.xticks(x, labels)
+    plt.ylabel("Mean IQM hardware probability (%)")
+    plt.xlabel("Semantic QML latent circuit size")
+    plt.title("1024D Semantic-Embedding QML Batch on IQM Sirius")
+    plt.ylim(0, 45)
+    plt.grid(True, axis="y", alpha=0.25)
+    plt.legend(ncol=2, fontsize=8)
+    plt.tight_layout()
+    plt.savefig(FIGURES / "semantic_embedding_qml_batch.png", dpi=220)
+    plt.close()
+
+
+def plot_semantic_embedding_shots() -> None:
+    records = [item for item in semantic_summary_records() if item.get("returnCode") == 0]
+    if not records:
+        return
+    dims = sorted({int(item.get("latentDim") or 0) for item in records})
+    plt.figure(figsize=(8.8, 4.6))
+    for shots, color, marker in [(512, "#174A7C", "o"), (1024, "#287D56", "s")]:
+        values = []
+        for dim in dims:
+            selected = [item for item in records if int(item.get("latentDim") or 0) == dim and int(item.get("shots") or 0) == shots]
+            if not selected:
+                values.append(0.0)
+                continue
+            values.append(
+                percent(
+                    sum(float(semantic_probabilities(item).get("event_aligned", 0.0)) for item in selected)
+                    / len(selected)
+                )
+            )
+        plt.plot(dims, values, marker=marker, linewidth=2.2, label=f"{shots} shots", color=color)
+    plt.xticks(dims, [str(item) for item in dims])
+    plt.xlabel("Latent qubits")
+    plt.ylabel("Mean event-aligned probability (%)")
+    plt.title("Event-Aligned Signal Across Semantic QML Circuit Sizes")
+    plt.ylim(20, 40)
+    plt.grid(True, axis="y", alpha=0.25)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(FIGURES / "semantic_embedding_qml_shots.png", dpi=220)
+    plt.close()
+
+
 def write_tables(payload: dict[str, Any], feature_receipt: dict[str, Any], qml_receipt: dict[str, Any]) -> None:
     local, hardware = qml_probabilities(qml_receipt)
     rows = []
@@ -207,6 +308,25 @@ def write_tables(payload: dict[str, Any], feature_receipt: dict[str, Any], qml_r
     batch_mode = "IQM hardware" if real_batch_records else "Dry-run"
     batch_count = len(real_batch_records) if real_batch_records else len(batch_records)
     batch_shots = sum(int(item.get("shots", 0)) for item in (real_batch_records if real_batch_records else batch_records))
+    semantic_records = [item for item in semantic_summary_records() if item.get("returnCode") == 0]
+    semantic_stats = semantic_group_stats(semantic_records)
+    semantic_jobs = len([item for item in semantic_records if item.get("hardwareJobSubmitted")])
+    semantic_shots = sum(int(item.get("shots", 0)) for item in semantic_records)
+    semantic_qubits = ", ".join(str(item["latentDim"]) for item in semantic_stats)
+    semantic_overall = {}
+    for key in SEMANTIC_CLASS_KEYS:
+        values = [float(semantic_probabilities(item).get(key, 0.0)) for item in semantic_records]
+        semantic_overall[key] = sum(values) / max(1, len(values))
+    semantic_rows = [
+        f"{item['latentDim']} & {item['records']} & {item['shots']} & "
+        f"{percent(item['mean']['stable']):.1f}\\% & {percent(item['mean']['event_aligned']):.1f}\\% & "
+        f"{percent(item['mean']['event_divergent']):.1f}\\% & {percent(item['mean']['uncertain']):.1f}\\% \\\\"
+        for item in semantic_stats
+    ]
+    semantic_overall_rows = [
+        f"{key.replace('_', ' ').title()} & {percent(semantic_overall.get(key, 0.0)):.1f}\\% \\\\"
+        for key in SEMANTIC_CLASS_KEYS
+    ]
 
     tex = r"""
 \begin{table}[t]
@@ -279,6 +399,50 @@ Total shots & """ + str(batch_shots) + r""" \\
 \caption{Automatic temporal-QML batch summary used for the seed-sensitivity figure.}
 \label{tab:batch-summary}
 \end{table}
+
+\begin{table}[t]
+\centering
+\scriptsize
+\begin{tabular}{lp{0.50\columnwidth}}
+\toprule
+Semantic embedding model & \path{intfloat/multilingual-e5-large-instruct} \\
+Embedding dimension & 1024 \\
+Hardware jobs & """ + str(semantic_jobs) + r""" \\
+Total hardware shots & """ + str(semantic_shots) + r""" \\
+Latent qubits tested & """ + semantic_qubits + r""" \\
+\bottomrule
+\end{tabular}
+\caption{Semantic-embedding QML batch configuration.}
+\label{tab:semantic-config}
+\end{table}
+
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{rrrrrrr}
+\toprule
+Qubits & Records & Shots & Stable & Event aligned & Event divergent & Uncertain \\
+\midrule
+""" + "\n".join(semantic_rows) + r"""
+\bottomrule
+\end{tabular}
+\caption{Mean IQM Sirius hardware distributions for the 1024-dimensional semantic-embedding QML batch.}
+\label{tab:semantic-batch}
+\end{table*}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+Class & Overall mean \\
+\midrule
+""" + "\n".join(semantic_overall_rows) + r"""
+\bottomrule
+\end{tabular}
+\caption{Aggregate distribution across all semantic-embedding QML hardware jobs.}
+\label{tab:semantic-overall}
+\end{table}
 """
     (DATA / "tables.tex").write_text(tex, encoding="utf-8")
 
@@ -297,6 +461,8 @@ def main() -> None:
     plot_counts(qml_receipt)
     plot_pipeline()
     plot_batch()
+    plot_semantic_embedding_batch()
+    plot_semantic_embedding_shots()
     write_tables(payload, feature_receipt, qml_receipt)
     print(f"Wrote figures to {FIGURES}")
     print(f"Wrote data tables to {DATA}")

@@ -13,7 +13,7 @@
 
 \hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue}
 
-\title{\vspace{-1.0em}Q-ORACLE: A Hardware-Backed Temporal Quantum Machine Learning Pipeline for PESTEL Scenario Forecasting}
+\title{\vspace{-1.0em}Q-ORACLE: Semantic-Embedding Temporal Quantum Machine Learning for PESTEL Scenario Forecasting}
 \author{Yehor Tereshchenko \\ QuantumFinances / Q-ORACLE Prototype}
 \date{June 2026}
 
@@ -21,7 +21,7 @@
 \maketitle
 
 \begin{abstract}
-We present Q-ORACLE, a prototype pipeline that extends weekly news-graph foresight into a compact temporal quantum machine learning (QML) experiment. The system starts from ORACLE-style time-dependent recursive summary graph snapshots, extracts weekly PESTEL vectors, forms event-conditioned future scenario targets, trains a small variational quantum circuit on week-to-week transitions, and submits the learned inference circuit to IQM Sirius hardware. The current experiment uses three weekly graph snapshots, a four-qubit temporal latent encoding, two layers of variational rotations and entanglement, and a two-bit scenario readout. A verified IQM temporal-QML job returned 128 hardware shots with counts \(\{00:53,01:26,10:32,11:17\}\), corresponding to a sampled distribution over stable, aligned-up, aligned-down and uncertain branches. We position the result as a reproducible hardware-backed systems demonstration rather than evidence of predictive market validity. The contribution is an end-to-end, inspectable method for connecting auditable news foresight, PESTEL world-state vectors and near-term quantum processors.
+We present Q-ORACLE, a prototype pipeline that extends weekly news-graph foresight into temporal quantum machine learning (QML) experiments on real hardware. The system starts from ORACLE-style time-dependent recursive summary graph snapshots, extracts weekly PESTEL world-state vectors, builds semantic embeddings from clustered weekly evidence, projects the embeddings into hardware-sized quantum feature maps, trains shallow variational circuits on week-to-week transitions, and submits the learned inference circuits to IQM Sirius hardware. The updated experiment uses three weekly graph snapshots, \texttt{intfloat/multilingual-e5-large-instruct} 1024-dimensional semantic embeddings, 8-, 10-, and 12-qubit latent circuits, two variational layers, and a two-bit scenario readout. We executed 18 IQM Sirius semantic-QML jobs across three seeds, two shot counts and three circuit sizes with no failed submissions. The aggregate hardware distribution was \(31.5\%\) stable, \(29.5\%\) event-aligned, \(19.7\%\) event-divergent and \(19.4\%\) uncertain. A compact four-qubit PESTEL-only circuit is retained as a baseline. We position the result as a reproducible hardware-backed systems demonstration rather than evidence of predictive market validity.
 \end{abstract}
 
 \section{Introduction}
@@ -29,7 +29,7 @@ News-driven foresight systems are useful only when they preserve traceability fr
 
 Q-ORACLE asks a narrower experimental question: can the weekly PESTEL trajectory produced by such a foresight system be converted into a small temporal QML task and executed on real quantum hardware? The goal is not to claim financial prediction or quantum advantage. Instead, the goal is to make the whole chain concrete enough for inspection: graph snapshots become vectors, vectors become training pairs, training pairs define a variational circuit, and the trained inference circuit is sampled on a quantum processing unit (QPU).
 
-The resulting prototype runs as a standalone backend/frontend system with a hardware folder for provider-specific execution. It already contains two verified IQM receipts: a feature-encoding circuit receipt and a temporal-QML receipt. This paper documents the method, implementation, hardware results and limitations.
+The resulting prototype runs as a standalone backend/frontend system with a hardware folder for provider-specific execution. It now contains the original compact PESTEL hardware receipts plus an 18-job semantic-embedding QML batch on IQM Sirius. This paper documents the method, implementation, hardware results and limitations.
 
 \section{Related Work}
 \paragraph{News foresight and PESTEL.}
@@ -39,10 +39,10 @@ ORACLE builds a weekly TRSG from crawled news, embeddings, hierarchical clusteri
 Variational quantum circuits have been proposed for one-step time-series forecasting~\cite{kaushik2022onestep}, multidimensional generative time-series modeling~\cite{horowitz2022hamiltonian}, and long-term multivariate forecasting~\cite{chittoor2024qultsf}. Recent benchmarks caution that variational quantum methods often struggle to outperform simple classical baselines under fair comparison~\cite{fellner2025benchmark}. We therefore treat Q-ORACLE as an empirical pipeline demonstration, not as an advantage claim.
 
 \paragraph{Feature maps and trainability.}
-Quantum machine learning can be interpreted as learning in quantum feature spaces~\cite{schuld2019hilbert}. However, trainability of variational circuits remains an open challenge; barren plateaus and noise can flatten optimization landscapes~\cite{larocca2024barren}. Q-ORACLE uses only four latent qubits and a shallow ansatz to keep the experiment hardware-safe.
+Quantum machine learning can be interpreted as learning in quantum feature spaces~\cite{schuld2019hilbert}. However, trainability of variational circuits remains an open challenge; barren plateaus and noise can flatten optimization landscapes~\cite{larocca2024barren}. Q-ORACLE therefore tests shallow circuits and explicit dimensionality reduction: a compact four-qubit PESTEL baseline and semantic-embedding circuits with 8, 10 and 12 latent qubits.
 
 \section{System Overview}
-Figure~\ref{fig:pipeline} summarizes the pipeline. Weekly graph snapshots are normalized into PESTEL vectors. A temporal forecaster produces scenario branches. Event text is converted into an interest vector and dimension weights. The temporal QML module compresses PESTEL and event information into four latent variables, trains a shallow variational circuit on week transitions and submits the resulting inference circuit to IQM.
+Figure~\ref{fig:pipeline} summarizes the pipeline. Weekly graph snapshots are normalized into PESTEL vectors and also converted into semantic embedding vectors from clustered weekly evidence. A temporal forecaster produces scenario branches. Event text is converted into an interest vector. The compact QML module compresses PESTEL and event information into four latent variables. The semantic QML module projects 1024-dimensional weekly embeddings into 8-, 10- and 12-qubit feature maps, trains shallow variational circuits on week transitions and submits the resulting inference circuits to IQM.
 
 \begin{figure*}[t]
 \centering
@@ -56,7 +56,7 @@ The current artifact uses three weekly snapshots stored in the QuantumFinances h
 \[
 v_t = [P_t,E_t,S_t,T_t,Env_t,L_t]\in[0,1]^6.
 \]
-The latest run payload also contains an event vector and scenario probabilities produced by the Q-ORACLE scenario engine.
+The latest run payload also contains an event vector and scenario probabilities produced by the Q-ORACLE scenario engine. For the semantic experiment, clustered weekly text and the event query are embedded with \texttt{intfloat/multilingual-e5-large-instruct}. The resulting embedding dimension is 1024, as recorded in the generated embedding payload.
 
 \subsection{PESTEL Timeline}
 Figure~\ref{fig:pestel} shows the weekly trajectory used by the experiment. The values are not raw market data; they are normalized world-state features derived from clustered news snapshots. The latest vector is listed in Table~\ref{tab:pestel-latest}.
@@ -68,7 +68,7 @@ Figure~\ref{fig:pestel} shows the weekly trajectory used by the experiment. The 
 \label{fig:pestel}
 \end{figure}
 
-\section{Temporal QML Method}
+\section{Compact PESTEL QML Baseline}
 \subsection{Latent Compression}
 To keep the QPU circuit small, the six-dimensional PESTEL vector is compressed into four latent features:
 \[
@@ -100,27 +100,66 @@ The circuit has four data qubits and two measured scenario bits. Each latent fea
 11&=\mathrm{uncertain}.
 \end{align*}
 
+\section{Semantic Embedding QML Method}
+\subsection{Embedding Construction}
+The semantic experiment uses the same weekly graph snapshots but treats cluster text as the primary representation. For each week, cluster texts are embedded with \texttt{intfloat/multilingual-e5-large-instruct}. Cluster embeddings are L2-normalized and averaged using cluster size weights to create one weekly vector:
+\[
+e_t\in\mathbb{R}^{1024}.
+\]
+The event query is embedded with the same model, yielding \(e_\mathrm{event}\in\mathbb{R}^{1024}\).
+
+\subsection{Projection Into Quantum Features}
+The QPU does not receive 1024 physical qubits. Instead, the semantic vectors are projected into hardware-sized latent feature vectors:
+\[
+x_t^{(d)}=\Pi_d(e_t), \qquad d\in\{8,10,12\}.
+\]
+The implemented projection uses PCA fitted on the weekly/event embedding set and seeded signed-random components when the requested latent dimension is larger than the available PCA rank. Values are scaled through a bounded nonlinearity into \([0,1]\), then encoded as \(R_y\) and \(R_z\) rotations.
+
+\subsection{Semantic Transition Target}
+For each transition \(t\rightarrow t+1\), the target distribution is derived from semantic similarity to the event embedding and week-to-week drift:
+\[
+y_t=[p_\mathrm{stable},p_\mathrm{event},p_\mathrm{divergent},p_\mathrm{uncertain}].
+\]
+Here event-aligned means the next weekly embedding moves closer to the event embedding, event-divergent means it moves away, and uncertain is driven by embedding drift. The variational circuit uses two layers of rotations and ring entanglement and measures two scenario bits.
+
 \section{Implementation}
-The implementation is contained in the QuantumFinances repository. The temporal QML hardware script is:
+The implementation is contained in the QuantumFinances repository. The compact temporal QML hardware script is:
 \begin{center}
 \small\texttt{quantum\_hardware/scripts/iqm\_temporal\_qml\_submit.py}
 \end{center}
 It consumes \texttt{latest\_run.json}, trains the variational parameters, writes a receipt and optionally submits to IQM Resonance through Qiskit-on-IQM. A batch runner,
 \texttt{iqm\_batch\_qml\_experiments.py}, repeats the experiment over seeds and shot counts, writing JSON and CSV summaries.
 
-The run command used for the verified temporal-QML experiment was:
+The semantic-embedding path is implemented by:
+\begin{center}
+\small\texttt{build\_semantic\_embeddings.py}
+\end{center}
+and
+\begin{center}
+\small\texttt{iqm\_semantic\_embedding\_qml\_submit.py}.
+\end{center}
+The semantic batch runner is:
+\begin{center}
+\small\texttt{iqm\_batch\_semantic\_qml\_experiments.py}
+\end{center}
+It repeats the experiment over seeds, shot counts and latent circuit sizes.
+
+The run command used for the verified compact temporal-QML experiment was:
 \begin{center}
 \scriptsize\texttt{iqm\_temporal\_qml\_submit.py --input latest\_run.json --shots 128 --iterations 60 --submit --wait}
 \end{center}
 
 \section{Hardware Results}
-The temporal QML job was submitted to IQM Sirius and returned job ID:
+The compact temporal QML job was submitted to IQM Sirius and returned job ID:
 \begin{center}
 \small\texttt{019e9de9-956e-7622-ace6-80049a84a06c}.
 \end{center}
 The result contains 128 shots with counts shown in Table~\ref{tab:counts}. The local statevector distribution and hardware sample distribution are compared in Table~\ref{tab:qml-results} and Figure~\ref{fig:qmlcomparison}.
 
+The semantic-embedding QML batch was then executed on IQM Sirius using 1024-dimensional E5 embeddings projected into 8-, 10- and 12-qubit latent circuits. The batch contains 18 submitted hardware jobs and 13,824 total hardware shots. Table~\ref{tab:semantic-config} summarizes the configuration, Table~\ref{tab:semantic-batch} reports mean hardware distributions by circuit size, and Table~\ref{tab:semantic-overall} reports the aggregate distribution across all semantic jobs.
+
 \input{data/tables.tex}
+\clearpage
 
 \begin{figure}[t]
 \centering
@@ -135,16 +174,32 @@ The result contains 128 shots with counts shown in Table~\ref{tab:counts}. The l
 \caption{Raw IQM temporal QML counts for the verified hardware job.}
 \label{fig:counts}
 \end{figure}
+\clearpage
 
 \section{Batch Experiments}
-The batch runner was executed in dry-run mode over five seeds and two shot settings, producing ten reproducible training/inference records. Figure~\ref{fig:batch} shows seed sensitivity for the 128-shot configuration. The batch script is hardware-capable: when \texttt{IQM\_TOKEN} is available and \texttt{--submit --wait} are provided, each record becomes a submitted IQM job and is written to the same summary format.
+The compact PESTEL batch runner provides a local seed-sensitivity baseline. Figure~\ref{fig:batch} shows this baseline result. The semantic batch is the main updated experiment: three seeds, two shot counts and three latent circuit sizes, all submitted to IQM Sirius. Figure~\ref{fig:semanticbatch} shows mean hardware probabilities by circuit size, while Figure~\ref{fig:semanticshots} shows the event-aligned signal across shot counts.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/qml_batch_seed_sensitivity.png}
-\caption{Dry-run batch sensitivity of local temporal-QML probabilities across seeds.}
+\caption{Compact temporal-QML baseline sensitivity across seeds.}
 \label{fig:batch}
 \end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/semantic_embedding_qml_batch.png}
+\caption{Mean IQM Sirius distributions for 1024-dimensional semantic-embedding QML projected into 8-, 10- and 12-qubit circuits.}
+\label{fig:semanticbatch}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/semantic_embedding_qml_shots.png}
+\caption{Event-aligned semantic-QML probability by latent circuit size and shot count.}
+\label{fig:semanticshots}
+\end{figure}
+\clearpage
 
 \section{Screenshots and Reproducibility Artifacts}
 Figure~\ref{fig:screens} captures the working prototype interface and IQM Resonance access point used for hardware execution. These screenshots are not used as scientific evidence; they document the operational environment for the hackathon artifact.
@@ -163,17 +218,18 @@ Figure~\ref{fig:screens} captures the working prototype interface and IQM Resona
 \caption{Screenshots included for reproducibility and presentation context.}
 \label{fig:screens}
 \end{figure*}
+\clearpage
 
 \section{Discussion}
-The hardware run is informative in three ways. First, it verifies that the ORACLE/PESTEL pipeline can produce a circuit that survives provider transpilation and executes on a real superconducting QPU. Second, the local-vs-hardware comparison exposes sampling and hardware effects directly instead of hiding them behind a simulated receipt. Third, the result gives a concrete scenario distribution that can be displayed in the application as a hardware-backed QML branch.
+The hardware runs are informative in three ways. First, they verify that the ORACLE/PESTEL pipeline can produce circuits that survive provider transpilation and execute on a real superconducting QPU. Second, the semantic batch demonstrates that high-dimensional text embeddings can be used as the data source while the QPU receives only an explicit, auditable latent projection. Third, the repeated hardware jobs expose seed, shot and circuit-size sensitivity instead of hiding uncertainty behind a single simulated receipt.
 
-The local model predicted the stable branch as dominant, while the hardware samples reduced the stable share and increased the aligned-down branch. With only 128 shots and one hardware run, this should be interpreted as an empirical sample from a noisy near-term device, not as a calibrated probability of a real-world event.
+Across all 18 semantic hardware jobs, stable remains the largest aggregate branch at \(31.5\%\), but event-aligned is close at \(29.5\%\). The 12-qubit setting produced the strongest event-aligned mean among the tested circuit sizes. This should be interpreted as a hardware-sampled scenario signal under the current embedding/projection design, not as a calibrated probability of a real-world event.
 
 \section{Limitations}
-The most important limitation is data scale: three weekly snapshots provide only two transition examples. This is enough for a hackathon hardware demonstration but not enough for statistical validation. The PESTEL vectors are also derived from sample snapshots rather than a large live production archive. Additionally, the circuit is shallow by design; larger ansatzes may be more expressive but are harder to train and noisier on near-term hardware. Finally, the event probability is a scenario compatibility score, not investment advice or a verified forecast.
+The most important limitation is data scale: three weekly snapshots provide only two transition examples. This is enough for a hackathon hardware demonstration but not enough for statistical validation. The semantic embeddings are real 1024-dimensional model outputs, but they are computed from a small sample payload. The projection from 1024 dimensions to 8--12 qubits is explicit and reproducible, yet it is still an information bottleneck. Additionally, the circuits are shallow by design; larger ansatzes may be more expressive but are harder to train and noisier on near-term hardware. Finally, the event probability is a scenario compatibility score, not investment advice or a verified forecast.
 
 \section{Conclusion}
-Q-ORACLE demonstrates an end-to-end path from auditable news graph foresight to temporal QML execution on real IQM hardware. The prototype turns weekly PESTEL vectors into transition targets, trains a compact variational circuit and samples the resulting scenario register on IQM Sirius. The main contribution is not predictive accuracy, but a reproducible architecture for linking narrative intelligence, temporal vector modeling and quantum hardware receipts.
+Q-ORACLE demonstrates an end-to-end path from auditable news graph foresight to temporal QML execution on real IQM hardware. The updated prototype turns weekly PESTEL vectors and 1024-dimensional semantic embeddings into transition targets, trains compact variational circuits and samples scenario registers on IQM Sirius. The main contribution is not predictive accuracy, but a reproducible architecture for linking narrative intelligence, semantic vector modeling and quantum hardware receipts.
 
 \begin{thebibliography}{9}
 \bibitem{oracle2025}

@@ -1,0 +1,1575 @@
+{
+  "createdAt": "2026-06-06T18:56:55.741972+00:00",
+  "embeddings": "quantum_hardware/inputs/latest_run.embeddings.json",
+  "input": "quantum_hardware/inputs/latest_run.json",
+  "records": [
+    {
+      "circuitDepth": 23,
+      "counts": {
+        "00": 169,
+        "01": 132,
+        "10": 109,
+        "11": 102
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.2578125,
+        "event_divergent": 0.212890625,
+        "stable": 0.330078125,
+        "uncertain": 0.19921875
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.25036165342696637,
+        "event_divergent": 0.09809032697516862,
+        "stable": 0.5177638041662537,
+        "uncertain": 0.1337842154316114
+      },
+      "iterations": 120,
+      "jobId": "019e9e3d-f6a2-7de0-aedc-17ae7cc78a75",
+      "latentDim": 8,
+      "qubits": 8,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots512_q8_20260606T184155Z.json",
+      "returnCode": 0,
+      "seed": 41,
+      "shots": 512,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:18<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:31<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots512_q8_20260606T184155Z.json\nJob id: 019e9e3d-f6a2-7de0-aedc-17ae7cc78a75\nCounts: {\"00\": 169, \"01\": 132, \"10\": 109, \"11\": 102}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3221894195796495
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2618472549095732
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2618472549095732
+        },
+        {
+          "iteration": 30,
+          "loss": 1.240906945973332
+        },
+        {
+          "iteration": 40,
+          "loss": 1.232427785542633
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2146882727197945
+        },
+        {
+          "iteration": 60,
+          "loss": 1.2081452056414261
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2071194088065418
+        },
+        {
+          "iteration": 80,
+          "loss": 1.1945630136649394
+        },
+        {
+          "iteration": 90,
+          "loss": 1.1854766247092754
+        },
+        {
+          "iteration": 100,
+          "loss": 1.183012447366512
+        },
+        {
+          "iteration": 110,
+          "loss": 1.183012447366512
+        },
+        {
+          "iteration": 120,
+          "loss": 1.176307329187317
+        }
+      ],
+      "transpiledDepth": 51
+    },
+    {
+      "circuitDepth": 23,
+      "counts": {
+        "00": 328,
+        "01": 306,
+        "10": 195,
+        "11": 195
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.298828125,
+        "event_divergent": 0.1904296875,
+        "stable": 0.3203125,
+        "uncertain": 0.1904296875
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.25036165342696637,
+        "event_divergent": 0.09809032697516862,
+        "stable": 0.5177638041662537,
+        "uncertain": 0.1337842154316114
+      },
+      "iterations": 120,
+      "jobId": "019e9e3e-8d88-7442-b449-c4f2fe6b066c",
+      "latentDim": 8,
+      "qubits": 8,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots1024_q8_20260606T184234Z.json",
+      "returnCode": 0,
+      "seed": 41,
+      "shots": 1024,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:18<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:43<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots1024_q8_20260606T184234Z.json\nJob id: 019e9e3e-8d88-7442-b449-c4f2fe6b066c\nCounts: {\"00\": 328, \"01\": 306, \"10\": 195, \"11\": 195}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3221894195796495
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2618472549095732
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2618472549095732
+        },
+        {
+          "iteration": 30,
+          "loss": 1.240906945973332
+        },
+        {
+          "iteration": 40,
+          "loss": 1.232427785542633
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2146882727197945
+        },
+        {
+          "iteration": 60,
+          "loss": 1.2081452056414261
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2071194088065418
+        },
+        {
+          "iteration": 80,
+          "loss": 1.1945630136649394
+        },
+        {
+          "iteration": 90,
+          "loss": 1.1854766247092754
+        },
+        {
+          "iteration": 100,
+          "loss": 1.183012447366512
+        },
+        {
+          "iteration": 110,
+          "loss": 1.183012447366512
+        },
+        {
+          "iteration": 120,
+          "loss": 1.176307329187317
+        }
+      ],
+      "transpiledDepth": 51
+    },
+    {
+      "circuitDepth": 23,
+      "counts": {
+        "00": 160,
+        "01": 170,
+        "10": 95,
+        "11": 87
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.33203125,
+        "event_divergent": 0.185546875,
+        "stable": 0.3125,
+        "uncertain": 0.169921875
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.2629005072306708,
+        "event_divergent": 0.09849844202259381,
+        "stable": 0.5297041464134198,
+        "uncertain": 0.10889690433331561
+      },
+      "iterations": 120,
+      "jobId": "019e9e3f-51a5-73f2-8a19-b0bf682ab8af",
+      "latentDim": 8,
+      "qubits": 8,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots512_q8_20260606T184325Z.json",
+      "returnCode": 0,
+      "seed": 42,
+      "shots": 512,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:18<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:31<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots512_q8_20260606T184325Z.json\nJob id: 019e9e3f-51a5-73f2-8a19-b0bf682ab8af\nCounts: {\"00\": 160, \"01\": 170, \"10\": 95, \"11\": 87}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3455433207096896
+        },
+        {
+          "iteration": 10,
+          "loss": 1.31853490090946
+        },
+        {
+          "iteration": 20,
+          "loss": 1.3077298336094838
+        },
+        {
+          "iteration": 30,
+          "loss": 1.3033547939793906
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2740945323978317
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2574109995040863
+        },
+        {
+          "iteration": 60,
+          "loss": 1.2546057500616203
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2367469115304286
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2213593042933604
+        },
+        {
+          "iteration": 90,
+          "loss": 1.2133819368098
+        },
+        {
+          "iteration": 100,
+          "loss": 1.2059675674749961
+        },
+        {
+          "iteration": 110,
+          "loss": 1.2043345888675954
+        },
+        {
+          "iteration": 120,
+          "loss": 1.2012558904707253
+        }
+      ],
+      "transpiledDepth": 51
+    },
+    {
+      "circuitDepth": 23,
+      "counts": {
+        "00": 354,
+        "01": 327,
+        "10": 167,
+        "11": 176
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.3193359375,
+        "event_divergent": 0.1630859375,
+        "stable": 0.345703125,
+        "uncertain": 0.171875
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.2629005072306708,
+        "event_divergent": 0.09849844202259381,
+        "stable": 0.5297041464134198,
+        "uncertain": 0.10889690433331561
+      },
+      "iterations": 120,
+      "jobId": "019e9e3f-e727-76f0-b38d-5cd9940c4253",
+      "latentDim": 8,
+      "qubits": 8,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots1024_q8_20260606T184403Z.json",
+      "returnCode": 0,
+      "seed": 42,
+      "shots": 1024,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:18<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:22<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:44<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots1024_q8_20260606T184403Z.json\nJob id: 019e9e3f-e727-76f0-b38d-5cd9940c4253\nCounts: {\"00\": 354, \"01\": 327, \"10\": 167, \"11\": 176}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3455433207096896
+        },
+        {
+          "iteration": 10,
+          "loss": 1.31853490090946
+        },
+        {
+          "iteration": 20,
+          "loss": 1.3077298336094838
+        },
+        {
+          "iteration": 30,
+          "loss": 1.3033547939793906
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2740945323978317
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2574109995040863
+        },
+        {
+          "iteration": 60,
+          "loss": 1.2546057500616203
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2367469115304286
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2213593042933604
+        },
+        {
+          "iteration": 90,
+          "loss": 1.2133819368098
+        },
+        {
+          "iteration": 100,
+          "loss": 1.2059675674749961
+        },
+        {
+          "iteration": 110,
+          "loss": 1.2043345888675954
+        },
+        {
+          "iteration": 120,
+          "loss": 1.2012558904707253
+        }
+      ],
+      "transpiledDepth": 51
+    },
+    {
+      "circuitDepth": 23,
+      "counts": {
+        "00": 165,
+        "01": 145,
+        "10": 98,
+        "11": 104
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.283203125,
+        "event_divergent": 0.19140625,
+        "stable": 0.322265625,
+        "uncertain": 0.203125
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.2600876761626361,
+        "event_divergent": 0.23918022329153,
+        "stable": 0.26636152770985055,
+        "uncertain": 0.23437057283598328
+      },
+      "iterations": 120,
+      "jobId": "019e9e40-ae01-79d0-8b31-3f881224a87c",
+      "latentDim": 8,
+      "qubits": 8,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots512_q8_20260606T184454Z.json",
+      "returnCode": 0,
+      "seed": 43,
+      "shots": 512,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:09<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:18<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:22<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:33<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots512_q8_20260606T184454Z.json\nJob id: 019e9e40-ae01-79d0-8b31-3f881224a87c\nCounts: {\"00\": 165, \"01\": 145, \"10\": 98, \"11\": 104}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3804718557303157
+        },
+        {
+          "iteration": 10,
+          "loss": 1.28538831989738
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2750774276550294
+        },
+        {
+          "iteration": 30,
+          "loss": 1.214094079414302
+        },
+        {
+          "iteration": 40,
+          "loss": 1.178661831123116
+        },
+        {
+          "iteration": 50,
+          "loss": 1.17288205622142
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1649337477023178
+        },
+        {
+          "iteration": 70,
+          "loss": 1.1538552356201213
+        },
+        {
+          "iteration": 80,
+          "loss": 1.1509665376629687
+        },
+        {
+          "iteration": 90,
+          "loss": 1.1501918009050132
+        },
+        {
+          "iteration": 100,
+          "loss": 1.1490540696583236
+        },
+        {
+          "iteration": 110,
+          "loss": 1.148033300935694
+        },
+        {
+          "iteration": 120,
+          "loss": 1.1472283124431821
+        }
+      ],
+      "transpiledDepth": 51
+    },
+    {
+      "circuitDepth": 23,
+      "counts": {
+        "00": 313,
+        "01": 276,
+        "10": 210,
+        "11": 225
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.26953125,
+        "event_divergent": 0.205078125,
+        "stable": 0.3056640625,
+        "uncertain": 0.2197265625
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.2600876761626361,
+        "event_divergent": 0.23918022329153,
+        "stable": 0.26636152770985055,
+        "uncertain": 0.23437057283598328
+      },
+      "iterations": 120,
+      "jobId": "019e9e41-4bb9-7ee3-9dba-93d0746268b1",
+      "latentDim": 8,
+      "qubits": 8,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots1024_q8_20260606T184534Z.json",
+      "returnCode": 0,
+      "seed": 43,
+      "shots": 1024,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:09<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:43<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots1024_q8_20260606T184534Z.json\nJob id: 019e9e41-4bb9-7ee3-9dba-93d0746268b1\nCounts: {\"00\": 313, \"01\": 276, \"10\": 210, \"11\": 225}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3804718557303157
+        },
+        {
+          "iteration": 10,
+          "loss": 1.28538831989738
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2750774276550294
+        },
+        {
+          "iteration": 30,
+          "loss": 1.214094079414302
+        },
+        {
+          "iteration": 40,
+          "loss": 1.178661831123116
+        },
+        {
+          "iteration": 50,
+          "loss": 1.17288205622142
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1649337477023178
+        },
+        {
+          "iteration": 70,
+          "loss": 1.1538552356201213
+        },
+        {
+          "iteration": 80,
+          "loss": 1.1509665376629687
+        },
+        {
+          "iteration": 90,
+          "loss": 1.1501918009050132
+        },
+        {
+          "iteration": 100,
+          "loss": 1.1490540696583236
+        },
+        {
+          "iteration": 110,
+          "loss": 1.148033300935694
+        },
+        {
+          "iteration": 120,
+          "loss": 1.1472283124431821
+        }
+      ],
+      "transpiledDepth": 51
+    },
+    {
+      "circuitDepth": 27,
+      "counts": {
+        "00": 135,
+        "01": 141,
+        "10": 119,
+        "11": 117
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.275390625,
+        "event_divergent": 0.232421875,
+        "stable": 0.263671875,
+        "uncertain": 0.228515625
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.3229218620171225,
+        "event_divergent": 0.10636724075982555,
+        "stable": 0.48034127415501277,
+        "uncertain": 0.09036962306803921
+      },
+      "iterations": 120,
+      "jobId": "019e9e42-154f-7b93-aa08-be0ff4f7b192",
+      "latentDim": 10,
+      "qubits": 10,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots512_q10_20260606T184625Z.json",
+      "returnCode": 0,
+      "seed": 41,
+      "shots": 512,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:09<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:31<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots512_q10_20260606T184625Z.json\nJob id: 019e9e42-154f-7b93-aa08-be0ff4f7b192\nCounts: {\"00\": 135, \"01\": 141, \"10\": 119, \"11\": 117}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.334968292712038
+        },
+        {
+          "iteration": 10,
+          "loss": 1.3256273220421502
+        },
+        {
+          "iteration": 20,
+          "loss": 1.3146734608367292
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2914796242882063
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2674577130069395
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2527927104601178
+        },
+        {
+          "iteration": 60,
+          "loss": 1.235941057076841
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2234156023605958
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2115405648158017
+        },
+        {
+          "iteration": 90,
+          "loss": 1.205912274938731
+        },
+        {
+          "iteration": 100,
+          "loss": 1.2053944364107254
+        },
+        {
+          "iteration": 110,
+          "loss": 1.2010034314918974
+        },
+        {
+          "iteration": 120,
+          "loss": 1.199099694651497
+        }
+      ],
+      "transpiledDepth": 63
+    },
+    {
+      "circuitDepth": 27,
+      "counts": {
+        "00": 317,
+        "01": 286,
+        "10": 212,
+        "11": 209
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.279296875,
+        "event_divergent": 0.20703125,
+        "stable": 0.3095703125,
+        "uncertain": 0.2041015625
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.3229218620171225,
+        "event_divergent": 0.10636724075982555,
+        "stable": 0.48034127415501277,
+        "uncertain": 0.09036962306803921
+      },
+      "iterations": 120,
+      "jobId": "019e9e42-b2ad-7ef3-a595-b214929320c6",
+      "latentDim": 10,
+      "qubits": 10,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots1024_q10_20260606T184704Z.json",
+      "returnCode": 0,
+      "seed": 41,
+      "shots": 1024,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:41<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots1024_q10_20260606T184704Z.json\nJob id: 019e9e42-b2ad-7ef3-a595-b214929320c6\nCounts: {\"00\": 317, \"01\": 286, \"10\": 212, \"11\": 209}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.334968292712038
+        },
+        {
+          "iteration": 10,
+          "loss": 1.3256273220421502
+        },
+        {
+          "iteration": 20,
+          "loss": 1.3146734608367292
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2914796242882063
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2674577130069395
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2527927104601178
+        },
+        {
+          "iteration": 60,
+          "loss": 1.235941057076841
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2234156023605958
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2115405648158017
+        },
+        {
+          "iteration": 90,
+          "loss": 1.205912274938731
+        },
+        {
+          "iteration": 100,
+          "loss": 1.2053944364107254
+        },
+        {
+          "iteration": 110,
+          "loss": 1.2010034314918974
+        },
+        {
+          "iteration": 120,
+          "loss": 1.199099694651497
+        }
+      ],
+      "transpiledDepth": 63
+    },
+    {
+      "circuitDepth": 27,
+      "counts": {
+        "00": 148,
+        "01": 135,
+        "10": 115,
+        "11": 114
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.263671875,
+        "event_divergent": 0.224609375,
+        "stable": 0.2890625,
+        "uncertain": 0.22265625
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.3049601319149658,
+        "event_divergent": 0.20639914246774319,
+        "stable": 0.26506414950746604,
+        "uncertain": 0.22357657610982506
+      },
+      "iterations": 120,
+      "jobId": "019e9e43-75d7-7f72-8dbd-c209265181ad",
+      "latentDim": 10,
+      "qubits": 10,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots512_q10_20260606T184755Z.json",
+      "returnCode": 0,
+      "seed": 42,
+      "shots": 512,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:09<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:18<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:30<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots512_q10_20260606T184755Z.json\nJob id: 019e9e43-75d7-7f72-8dbd-c209265181ad\nCounts: {\"00\": 148, \"01\": 135, \"10\": 115, \"11\": 114}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3208062687031374
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2846555409844544
+        },
+        {
+          "iteration": 20,
+          "loss": 1.246684711537418
+        },
+        {
+          "iteration": 30,
+          "loss": 1.246684711537418
+        },
+        {
+          "iteration": 40,
+          "loss": 1.246684711537418
+        },
+        {
+          "iteration": 50,
+          "loss": 1.246684711537418
+        },
+        {
+          "iteration": 60,
+          "loss": 1.244670074690811
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2382752771809848
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2250839001413163
+        },
+        {
+          "iteration": 90,
+          "loss": 1.215144287952981
+        },
+        {
+          "iteration": 100,
+          "loss": 1.2063751559011373
+        },
+        {
+          "iteration": 110,
+          "loss": 1.1974998074596428
+        },
+        {
+          "iteration": 120,
+          "loss": 1.191262096317553
+        }
+      ],
+      "transpiledDepth": 63
+    },
+    {
+      "circuitDepth": 27,
+      "counts": {
+        "00": 319,
+        "01": 294,
+        "10": 205,
+        "11": 206
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.287109375,
+        "event_divergent": 0.2001953125,
+        "stable": 0.3115234375,
+        "uncertain": 0.201171875
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.3049601319149658,
+        "event_divergent": 0.20639914246774319,
+        "stable": 0.26506414950746604,
+        "uncertain": 0.22357657610982506
+      },
+      "iterations": 120,
+      "jobId": "019e9e44-0c47-75e0-81e3-932b1c333205",
+      "latentDim": 10,
+      "qubits": 10,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots1024_q10_20260606T184833Z.json",
+      "returnCode": 0,
+      "seed": 42,
+      "shots": 1024,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:09<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:18<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:43<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots1024_q10_20260606T184833Z.json\nJob id: 019e9e44-0c47-75e0-81e3-932b1c333205\nCounts: {\"00\": 319, \"01\": 294, \"10\": 205, \"11\": 206}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3208062687031374
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2846555409844544
+        },
+        {
+          "iteration": 20,
+          "loss": 1.246684711537418
+        },
+        {
+          "iteration": 30,
+          "loss": 1.246684711537418
+        },
+        {
+          "iteration": 40,
+          "loss": 1.246684711537418
+        },
+        {
+          "iteration": 50,
+          "loss": 1.246684711537418
+        },
+        {
+          "iteration": 60,
+          "loss": 1.244670074690811
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2382752771809848
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2250839001413163
+        },
+        {
+          "iteration": 90,
+          "loss": 1.215144287952981
+        },
+        {
+          "iteration": 100,
+          "loss": 1.2063751559011373
+        },
+        {
+          "iteration": 110,
+          "loss": 1.1974998074596428
+        },
+        {
+          "iteration": 120,
+          "loss": 1.191262096317553
+        }
+      ],
+      "transpiledDepth": 63
+    },
+    {
+      "circuitDepth": 27,
+      "counts": {
+        "00": 151,
+        "01": 145,
+        "10": 111,
+        "11": 105
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.283203125,
+        "event_divergent": 0.216796875,
+        "stable": 0.294921875,
+        "uncertain": 0.205078125
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.2526792542206362,
+        "event_divergent": 0.2484219560965886,
+        "stable": 0.27716335867876946,
+        "uncertain": 0.22173543100400567
+      },
+      "iterations": 120,
+      "jobId": "019e9e44-d7b1-7d92-b4cb-0581aa5fe552",
+      "latentDim": 10,
+      "qubits": 10,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots512_q10_20260606T184925Z.json",
+      "returnCode": 0,
+      "seed": 43,
+      "shots": 512,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:09<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:18<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:30<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots512_q10_20260606T184925Z.json\nJob id: 019e9e44-d7b1-7d92-b4cb-0581aa5fe552\nCounts: {\"00\": 151, \"01\": 145, \"10\": 111, \"11\": 105}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3210669877109698
+        },
+        {
+          "iteration": 10,
+          "loss": 1.3021785642974286
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2604461074744644
+        },
+        {
+          "iteration": 30,
+          "loss": 1.185734006581082
+        },
+        {
+          "iteration": 40,
+          "loss": 1.1755677407653762
+        },
+        {
+          "iteration": 50,
+          "loss": 1.1543831804831308
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1506969892826273
+        },
+        {
+          "iteration": 70,
+          "loss": 1.1506969892826273
+        },
+        {
+          "iteration": 80,
+          "loss": 1.149298792878967
+        },
+        {
+          "iteration": 90,
+          "loss": 1.1477657760960718
+        },
+        {
+          "iteration": 100,
+          "loss": 1.1474583689171562
+        },
+        {
+          "iteration": 110,
+          "loss": 1.1471497055019944
+        },
+        {
+          "iteration": 120,
+          "loss": 1.146737234974282
+        }
+      ],
+      "transpiledDepth": 63
+    },
+    {
+      "circuitDepth": 27,
+      "counts": {
+        "00": 299,
+        "01": 276,
+        "10": 232,
+        "11": 217
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.26953125,
+        "event_divergent": 0.2265625,
+        "stable": 0.2919921875,
+        "uncertain": 0.2119140625
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.2526792542206362,
+        "event_divergent": 0.2484219560965886,
+        "stable": 0.27716335867876946,
+        "uncertain": 0.22173543100400567
+      },
+      "iterations": 120,
+      "jobId": "019e9e45-6dd8-7761-9e45-addd9ae242c0",
+      "latentDim": 10,
+      "qubits": 10,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots1024_q10_20260606T185004Z.json",
+      "returnCode": 0,
+      "seed": 43,
+      "shots": 1024,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:43<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots1024_q10_20260606T185004Z.json\nJob id: 019e9e45-6dd8-7761-9e45-addd9ae242c0\nCounts: {\"00\": 299, \"01\": 276, \"10\": 232, \"11\": 217}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3210669877109698
+        },
+        {
+          "iteration": 10,
+          "loss": 1.3021785642974286
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2604461074744644
+        },
+        {
+          "iteration": 30,
+          "loss": 1.185734006581082
+        },
+        {
+          "iteration": 40,
+          "loss": 1.1755677407653762
+        },
+        {
+          "iteration": 50,
+          "loss": 1.1543831804831308
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1506969892826273
+        },
+        {
+          "iteration": 70,
+          "loss": 1.1506969892826273
+        },
+        {
+          "iteration": 80,
+          "loss": 1.149298792878967
+        },
+        {
+          "iteration": 90,
+          "loss": 1.1477657760960718
+        },
+        {
+          "iteration": 100,
+          "loss": 1.1474583689171562
+        },
+        {
+          "iteration": 110,
+          "loss": 1.1471497055019944
+        },
+        {
+          "iteration": 120,
+          "loss": 1.146737234974282
+        }
+      ],
+      "transpiledDepth": 63
+    },
+    {
+      "circuitDepth": 31,
+      "counts": {
+        "00": 166,
+        "01": 155,
+        "10": 101,
+        "11": 90
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.302734375,
+        "event_divergent": 0.197265625,
+        "stable": 0.32421875,
+        "uncertain": 0.17578125
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.30089082826275143,
+        "event_divergent": 0.19893903713636119,
+        "stable": 0.3007803385477723,
+        "uncertain": 0.19938979605311513
+      },
+      "iterations": 120,
+      "jobId": "019e9e46-48da-7b53-af28-59e52921c943",
+      "latentDim": 12,
+      "qubits": 12,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots512_q12_20260606T185056Z.json",
+      "returnCode": 0,
+      "seed": 41,
+      "shots": 512,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:18<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:22<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:23<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:24<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:46<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots512_q12_20260606T185056Z.json\nJob id: 019e9e46-48da-7b53-af28-59e52921c943\nCounts: {\"00\": 166, \"01\": 155, \"10\": 101, \"11\": 90}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.306233516052326
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2754005736552088
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2754005736552088
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2754005736552088
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2664359241409668
+        },
+        {
+          "iteration": 50,
+          "loss": 1.243003819775281
+        },
+        {
+          "iteration": 60,
+          "loss": 1.237352311644011
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2290757644266215
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2137960582650953
+        },
+        {
+          "iteration": 90,
+          "loss": 1.2136150609101866
+        },
+        {
+          "iteration": 100,
+          "loss": 1.2111252776075703
+        },
+        {
+          "iteration": 110,
+          "loss": 1.201222403678774
+        },
+        {
+          "iteration": 120,
+          "loss": 1.193031214157342
+        }
+      ],
+      "transpiledDepth": 75
+    },
+    {
+      "circuitDepth": 31,
+      "counts": {
+        "00": 367,
+        "01": 263,
+        "10": 206,
+        "11": 188
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.2568359375,
+        "event_divergent": 0.201171875,
+        "stable": 0.3583984375,
+        "uncertain": 0.18359375
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.30089082826275143,
+        "event_divergent": 0.19893903713636119,
+        "stable": 0.3007803385477723,
+        "uncertain": 0.19938979605311513
+      },
+      "iterations": 120,
+      "jobId": "019e9e47-2c20-7db0-b982-a811877fad99",
+      "latentDim": 12,
+      "qubits": 12,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots1024_q12_20260606T185155Z.json",
+      "returnCode": 0,
+      "seed": 41,
+      "shots": 1024,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:18<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:22<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:23<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:24<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:25<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:26<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:48<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed41_shots1024_q12_20260606T185155Z.json\nJob id: 019e9e47-2c20-7db0-b982-a811877fad99\nCounts: {\"00\": 367, \"01\": 263, \"10\": 206, \"11\": 188}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.306233516052326
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2754005736552088
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2754005736552088
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2754005736552088
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2664359241409668
+        },
+        {
+          "iteration": 50,
+          "loss": 1.243003819775281
+        },
+        {
+          "iteration": 60,
+          "loss": 1.237352311644011
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2290757644266215
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2137960582650953
+        },
+        {
+          "iteration": 90,
+          "loss": 1.2136150609101866
+        },
+        {
+          "iteration": 100,
+          "loss": 1.2111252776075703
+        },
+        {
+          "iteration": 110,
+          "loss": 1.201222403678774
+        },
+        {
+          "iteration": 120,
+          "loss": 1.193031214157342
+        }
+      ],
+      "transpiledDepth": 75
+    },
+    {
+      "circuitDepth": 31,
+      "counts": {
+        "00": 157,
+        "01": 172,
+        "10": 88,
+        "11": 95
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.3359375,
+        "event_divergent": 0.171875,
+        "stable": 0.306640625,
+        "uncertain": 0.185546875
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.4468402289823378,
+        "event_divergent": 0.156663444659263,
+        "stable": 0.2619113439134879,
+        "uncertain": 0.13458498244491127
+      },
+      "iterations": 120,
+      "jobId": "019e9e48-1151-79d0-a49a-58b51184ff40",
+      "latentDim": 12,
+      "qubits": 12,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots512_q12_20260606T185254Z.json",
+      "returnCode": 0,
+      "seed": 42,
+      "shots": 512,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:22<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:23<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:24<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:25<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:27<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:49<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots512_q12_20260606T185254Z.json\nJob id: 019e9e48-1151-79d0-a49a-58b51184ff40\nCounts: {\"00\": 157, \"01\": 172, \"10\": 88, \"11\": 95}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.321433092730516
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2944370260041533
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2944370260041533
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2548065203568763
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2548065203568763
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2446549043192852
+        },
+        {
+          "iteration": 60,
+          "loss": 1.2223570013827394
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2149561485447307
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2008626377179676
+        },
+        {
+          "iteration": 90,
+          "loss": 1.190051421616705
+        },
+        {
+          "iteration": 100,
+          "loss": 1.1864802132806729
+        },
+        {
+          "iteration": 110,
+          "loss": 1.1838906560955564
+        },
+        {
+          "iteration": 120,
+          "loss": 1.1792149697193948
+        }
+      ],
+      "transpiledDepth": 75
+    },
+    {
+      "circuitDepth": 31,
+      "counts": {
+        "00": 364,
+        "01": 316,
+        "10": 171,
+        "11": 173
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.30859375,
+        "event_divergent": 0.1669921875,
+        "stable": 0.35546875,
+        "uncertain": 0.1689453125
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.4468402289823378,
+        "event_divergent": 0.156663444659263,
+        "stable": 0.2619113439134879,
+        "uncertain": 0.13458498244491127
+      },
+      "iterations": 120,
+      "jobId": "019e9e48-ff24-7ab2-96cc-f2ea2efc9b72",
+      "latentDim": 12,
+      "qubits": 12,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots1024_q12_20260606T185355Z.json",
+      "returnCode": 0,
+      "seed": 42,
+      "shots": 1024,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:22<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:23<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:24<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:25<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:26<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:49<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed42_shots1024_q12_20260606T185355Z.json\nJob id: 019e9e48-ff24-7ab2-96cc-f2ea2efc9b72\nCounts: {\"00\": 364, \"01\": 316, \"10\": 171, \"11\": 173}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.321433092730516
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2944370260041533
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2944370260041533
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2548065203568763
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2548065203568763
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2446549043192852
+        },
+        {
+          "iteration": 60,
+          "loss": 1.2223570013827394
+        },
+        {
+          "iteration": 70,
+          "loss": 1.2149561485447307
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2008626377179676
+        },
+        {
+          "iteration": 90,
+          "loss": 1.190051421616705
+        },
+        {
+          "iteration": 100,
+          "loss": 1.1864802132806729
+        },
+        {
+          "iteration": 110,
+          "loss": 1.1838906560955564
+        },
+        {
+          "iteration": 120,
+          "loss": 1.1792149697193948
+        }
+      ],
+      "transpiledDepth": 75
+    },
+    {
+      "circuitDepth": 31,
+      "counts": {
+        "00": 142,
+        "01": 182,
+        "10": 89,
+        "11": 99
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.35546875,
+        "event_divergent": 0.173828125,
+        "stable": 0.27734375,
+        "uncertain": 0.193359375
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.25916322452670704,
+        "event_divergent": 0.24159256765073903,
+        "stable": 0.2929476747004565,
+        "uncertain": 0.20629653312209745
+      },
+      "iterations": 120,
+      "jobId": "019e9e49-e86f-71c0-9661-c840185e3a04",
+      "latentDim": 12,
+      "qubits": 12,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots512_q12_20260606T185455Z.json",
+      "returnCode": 0,
+      "seed": 43,
+      "shots": 512,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:08<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:22<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:23<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:24<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:25<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:26<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:49<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots512_q12_20260606T185455Z.json\nJob id: 019e9e49-e86f-71c0-9661-c840185e3a04\nCounts: {\"00\": 142, \"01\": 182, \"10\": 89, \"11\": 99}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3290667853387166
+        },
+        {
+          "iteration": 10,
+          "loss": 1.3062454509613652
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2500850228414702
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2500850228414702
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2500850228414702
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2361941221619692
+        },
+        {
+          "iteration": 60,
+          "loss": 1.2294392474591143
+        },
+        {
+          "iteration": 70,
+          "loss": 1.215835853610546
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2121746897232417
+        },
+        {
+          "iteration": 90,
+          "loss": 1.2046394943693306
+        },
+        {
+          "iteration": 100,
+          "loss": 1.1997405658942384
+        },
+        {
+          "iteration": 110,
+          "loss": 1.194970373428597
+        },
+        {
+          "iteration": 120,
+          "loss": 1.1906153818559855
+        }
+      ],
+      "transpiledDepth": 75
+    },
+    {
+      "circuitDepth": 31,
+      "counts": {
+        "00": 351,
+        "01": 330,
+        "10": 174,
+        "11": 169
+      },
+      "hardwareJobSubmitted": true,
+      "hardwareProbabilities": {
+        "event_aligned": 0.322265625,
+        "event_divergent": 0.169921875,
+        "stable": 0.3427734375,
+        "uncertain": 0.1650390625
+      },
+      "inferenceProbabilities": {
+        "event_aligned": 0.25916322452670704,
+        "event_divergent": 0.24159256765073903,
+        "stable": 0.2929476747004565,
+        "uncertain": 0.20629653312209745
+      },
+      "iterations": 120,
+      "jobId": "019e9e4a-d5f2-7903-8827-e7134dc0155b",
+      "latentDim": 12,
+      "qubits": 12,
+      "receiptPath": "quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots1024_q12_20260606T185555Z.json",
+      "returnCode": 0,
+      "seed": 43,
+      "shots": 1024,
+      "stderr": "Progress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:00<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:01<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:02<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:03<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:04<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:05<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:06<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:07<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:09<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:10<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:11<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:12<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:13<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:14<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:15<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:16<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:17<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:19<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:20<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:21<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:22<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:23<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:24<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:25<?, ?it/s]\nProgress in queue:   0%|          | 0/1 [00:48<?, ?it/s]",
+      "stdout": "IQM semantic embedding QML receipt written: <repo>/quantum_hardware/receipts/iqm_semantic_qml_batch_hardware_seed43_shots1024_q12_20260606T185555Z.json\nJob id: 019e9e4a-d5f2-7903-8827-e7134dc0155b\nCounts: {\"00\": 351, \"01\": 330, \"10\": 174, \"11\": 169}",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.3290667853387166
+        },
+        {
+          "iteration": 10,
+          "loss": 1.3062454509613652
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2500850228414702
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2500850228414702
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2500850228414702
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2361941221619692
+        },
+        {
+          "iteration": 60,
+          "loss": 1.2294392474591143
+        },
+        {
+          "iteration": 70,
+          "loss": 1.215835853610546
+        },
+        {
+          "iteration": 80,
+          "loss": 1.2121746897232417
+        },
+        {
+          "iteration": 90,
+          "loss": 1.2046394943693306
+        },
+        {
+          "iteration": 100,
+          "loss": 1.1997405658942384
+        },
+        {
+          "iteration": 110,
+          "loss": 1.194970373428597
+        },
+        {
+          "iteration": 120,
+          "loss": 1.1906153818559855
+        }
+      ],
+      "transpiledDepth": 75
+    }
+  ],
+  "submit": true,
+  "wait": true
+}
