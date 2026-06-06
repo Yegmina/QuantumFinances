@@ -44,12 +44,18 @@ Create a dry-run QASM and receipt:
 python .\scripts\ibm_sampler_v2_submit.py --input .\inputs\latest_run.json --dry-run
 ```
 
-Submit a real small job:
+Check account credentials before submitting:
 
 ```powershell
 $env:IBM_QUANTUM_TOKEN="your-token"
 $env:IBM_QUANTUM_CHANNEL="ibm_quantum_platform"
 
+python .\scripts\check_ibm_account.py
+```
+
+Submit a real small job only after the credential check prints hardware backend names:
+
+```powershell
 python .\scripts\ibm_sampler_v2_submit.py `
   --input .\inputs\latest_run.json `
   --shots 256 `

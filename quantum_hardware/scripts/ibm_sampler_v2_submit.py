@@ -35,6 +35,15 @@ def select_backend(service, backend_name: str | None, qubits: int):
         return service.least_busy(simulator=False, min_num_qubits=qubits)
 
 
+def friendly_ibm_auth_error(exc: Exception) -> str:
+    return (
+        "IBM Quantum authentication failed before any hardware job was submitted.\n"
+        "Create a new IBM Quantum Platform API key, set IBM_QUANTUM_TOKEN to that new value, "
+        "and rerun scripts/check_ibm_account.py first.\n"
+        f"Provider error: {exc}"
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Submit a QuantumFinances circuit through IBM Qiskit Runtime SamplerV2.")
     parser.add_argument("--input", default=str(Path(__file__).resolve().parents[1] / "inputs" / "sample_run.json"))
@@ -83,8 +92,11 @@ def main() -> None:
     from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
     from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2 as Sampler
 
-    service = QiskitRuntimeService(**service_kwargs(args))
-    backend = select_backend(service, args.backend or None, circuit.num_qubits)
+    try:
+        service = QiskitRuntimeService(**service_kwargs(args))
+        backend = select_backend(service, args.backend or None, circuit.num_qubits)
+    except Exception as exc:
+        raise SystemExit(friendly_ibm_auth_error(exc)) from exc
     pass_manager = generate_preset_pass_manager(optimization_level=args.optimization_level, backend=backend)
     isa_circuit = pass_manager.run(circuit)
 
@@ -113,4 +125,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
