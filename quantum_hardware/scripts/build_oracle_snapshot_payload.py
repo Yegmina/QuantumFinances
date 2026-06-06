@@ -163,6 +163,9 @@ def run_id_for(event_text: str, series: list[Any], quantum_run_id: str) -> str:
 async def create_run(args: argparse.Namespace) -> RunResponse:
     source = None
     if args.manifest_file:
+        token = os.getenv(args.auth_token_env) if args.auth_token_env else None
+        if args.require_auth and not token:
+            raise SystemExit(f"{args.auth_token_env} is required to fetch snapshot files from {args.manifest_file}")
         manifest_path = Path(args.manifest_file)
         manifest = load_json(manifest_path)
         series, manifest_items = build_series_from_manifest_data(
@@ -170,7 +173,7 @@ async def create_run(args: argparse.Namespace) -> RunResponse:
             source_label=str(manifest_path),
             base_url=args.base_url,
             snapshot_kind=args.snapshot_kind,
-            token=None,
+            token=token,
         )
         source = remote_source_connection(str(manifest_path), len(manifest_items))
     elif args.manifest_url:
