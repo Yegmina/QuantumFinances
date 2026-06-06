@@ -1,0 +1,17 @@
+[
+  {
+    "id": "2026-W21",
+    "label": "Sample Week 21",
+    "file": "graph_2026_w21.json"
+  },
+  {
+    "id": "2026-W22",
+    "label": "Sample Week 22",
+    "file": "graph_2026_w22.json"
+  },
+  {
+    "id": "2026-W23",
+    "label": "Sample Week 23",
+    "file": "graph_2026_w23.json"
+  }
+]

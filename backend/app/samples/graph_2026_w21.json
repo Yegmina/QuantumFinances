@@ -1,0 +1,29 @@
+{
+  "levels": {
+    "L2": {
+      "clusterSizes": [120, 75, 42, 31],
+      "graph": {
+        "nodes": [
+          {
+            "id": 0,
+            "text": "<p>Government policy, sanctions, and Ukraine Russia conflict pressure alliances and energy security.</p>"
+          },
+          {
+            "id": 1,
+            "text": "<p>Market growth, bank liquidity, investment, and business confidence improve after trade talks.</p>"
+          },
+          {
+            "id": 2,
+            "text": "<p>AI software platforms, blockchain adoption, data centers, and cyber security investment expand.</p>"
+          },
+          {
+            "id": 3,
+            "text": "<p>Climate policy, emissions regulation, court review, and legal compliance affect energy projects.</p>"
+          }
+        ],
+        "edges": [[0, 1], [1, 2], [0, 3], [2, 3]]
+      }
+    }
+  }
+}
+

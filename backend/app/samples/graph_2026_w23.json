@@ -1,0 +1,33 @@
+{
+  "levels": {
+    "L2": {
+      "clusterSizes": [160, 100, 63, 52, 37],
+      "graph": {
+        "nodes": [
+          {
+            "id": 0,
+            "text": "<p>Russia Ukraine attacks, defense spending, sanctions, and NATO security concerns intensify.</p>"
+          },
+          {
+            "id": 1,
+            "text": "<p>Markets price growth, investment, trade recovery, bank policy, and business expansion.</p>"
+          },
+          {
+            "id": 2,
+            "text": "<p>AI platforms, cloud software, cyber risk, crypto regulation, and blockchain finance accelerate.</p>"
+          },
+          {
+            "id": 3,
+            "text": "<p>Energy prices, gas supply, climate emissions, storms, and electricity infrastructure affect risk.</p>"
+          },
+          {
+            "id": 4,
+            "text": "<p>Court rulings, police investigation, compliance laws, and rights debate shape legal uncertainty.</p>"
+          }
+        ],
+        "edges": [[0, 1], [0, 3], [1, 2], [2, 4], [3, 4], [0, 4]]
+      }
+    }
+  }
+}
+
