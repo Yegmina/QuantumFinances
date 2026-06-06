@@ -1,1 +1,1 @@
-"""Scenario engine services for QuantumFinances."""
+"""Scenario engine services for Q-FIN."""

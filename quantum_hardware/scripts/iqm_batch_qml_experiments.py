@@ -162,7 +162,7 @@ def write_summary(out_dir: Path, records: list[dict[str, Any]], args: argparse.N
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run repeated QuantumFinances temporal QML experiments on IQM or dry-run.")
+    parser = argparse.ArgumentParser(description="Run repeated Q-FIN temporal QML experiments on IQM or dry-run.")
     parser.add_argument("--input", default=str(Path(__file__).resolve().parents[1] / "inputs" / "latest_run.json"))
     parser.add_argument("--out-dir", default=str(Path(__file__).resolve().parents[1] / "experiments"))
     parser.add_argument("--seeds", default="41,42,43,44,45")

@@ -1,22 +1,24 @@
-# QuantumFinances Hardware Preparation
+# Q-FIN Hardware Preparation
 
-This folder prepares a QuantumFinances scenario run for real quantum-computer execution.
+This folder prepares a Q-FIN scenario run for real quantum-computer execution.
 
 Default behavior is intentionally dry-run. A real hardware job is submitted only when a provider script is run with `--submit`.
 
 ## Provider Targets
 
-| Target | Status | Use |
-| --- | --- | --- |
-| IBM Quantum | Ready | Qiskit Runtime `SamplerV2` hardware submission with a tiny circuit and saved receipt. |
-| IQM Quantum Stack | Ready | Qiskit-on-IQM submission when the hackathon IQM endpoint and quantum computer name are available. |
-| QMill Platform | Package ready | Exports QASM, manifest, and input payload for QMill upload/compression workflows. |
-| LUMI Supercomputer | Classical support | Use for large parameter sweeps or preprocessing, not as a QPU target. |
-| Google AI Studio | Not quantum hardware | Useful for product AI, not for quantum circuit execution. |
+
+| Target             | Status               | Use                                                                                               |
+| ------------------ | -------------------- | ------------------------------------------------------------------------------------------------- |
+| IBM Quantum        | Ready                | Qiskit Runtime `SamplerV2` hardware submission with a tiny circuit and saved receipt.             |
+| IQM Quantum Stack  | Ready                | Qiskit-on-IQM submission when the hackathon IQM endpoint and quantum computer name are available. |
+| QMill Platform     | Package ready        | Exports QASM, manifest, and input payload for QMill upload/compression workflows.                 |
+| LUMI Supercomputer | Classical support    | Use for large parameter sweeps or preprocessing, not as a QPU target.                             |
+| Google AI Studio   | Not quantum hardware | Useful for product AI, not for quantum circuit execution.                                         |
+
 
 ## 1. Create A Hardware Payload
 
-Start the QuantumFinances backend, then export one run:
+Start the Q-FIN backend, then export one run:
 
 ```powershell
 cd quantum_hardware
@@ -88,7 +90,7 @@ Generate an API token from the IQM Resonance dashboard, then run:
 wsl bash -lc 'cd /mnt/c/path/to/QuantumFinances && export IQM_TOKEN="your-token" && ~/qf-miniconda/bin/python quantum_hardware/scripts/check_iqm_account.py'
 ```
 
-Dry-run the QuantumFinances circuit:
+Dry-run the Q-FIN circuit:
 
 ```powershell
 wsl bash -lc 'cd /mnt/c/path/to/QuantumFinances && ~/qf-miniconda/bin/python quantum_hardware/scripts/iqm_qiskit_submit.py --input quantum_hardware/inputs/latest_run.json --dry-run --shots 128'
@@ -214,3 +216,4 @@ Only show a run as real hardware when the saved receipt includes:
 - circuit fingerprint,
 - input run id,
 - raw counts or a provider result reference.
+

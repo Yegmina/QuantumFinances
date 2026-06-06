@@ -1,4 +1,4 @@
-# QuantumFinances Runbook
+# Q-FIN Runbook
 
 ## Full Local Run
 
@@ -36,7 +36,7 @@ http://127.0.0.1:5179
 Company becomes the biggest in its market after AI investment and market growth
 ```
 
-4. Run the QuantumFinances pipeline.
+4. Run the Q-FIN pipeline.
 5. The engine returns PESTEL weights, event vector, scenario count, shots, seed, future vectors, calibrated event probability, and explanation.
 6. Show:
    - source graph,

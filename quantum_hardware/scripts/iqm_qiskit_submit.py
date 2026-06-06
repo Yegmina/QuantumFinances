@@ -33,7 +33,7 @@ def import_iqm_provider():
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Submit a QuantumFinances circuit through Qiskit-on-IQM.")
+    parser = argparse.ArgumentParser(description="Submit a Q-FIN circuit through Qiskit-on-IQM.")
     parser.add_argument("--input", default=str(Path(__file__).resolve().parents[1] / "inputs" / "sample_run.json"))
     parser.add_argument("--out", default="")
     parser.add_argument("--shots", type=int, default=256)
