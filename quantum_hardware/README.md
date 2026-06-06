@@ -100,6 +100,12 @@ Submit to IQM Sirius:
 wsl bash -lc 'cd /mnt/c/path/to/QuantumFinances && export IQM_TOKEN="your-token" && ~/qf-miniconda/bin/python quantum_hardware/scripts/iqm_qiskit_submit.py --input quantum_hardware/inputs/latest_run.json --shots 128 --submit --wait'
 ```
 
+Submit the temporal QML circuit:
+
+```powershell
+wsl bash -lc 'cd /mnt/c/path/to/QuantumFinances && export IQM_TOKEN="your-token" && ~/qf-miniconda/bin/python quantum_hardware/scripts/iqm_temporal_qml_submit.py --input quantum_hardware/inputs/latest_run.json --shots 128 --iterations 60 --submit --wait'
+```
+
 For a clean non-WSL setup, install dependencies:
 
 ```powershell
