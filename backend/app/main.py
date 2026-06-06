@@ -25,7 +25,7 @@ from app.services.run_store import get_run, save_run
 from app.services.source_adapter import SourceAdapter
 
 app = FastAPI(
-    title="Q-Fin Scenario Engine",
+    title="Q-FIN Scenario Engine",
     version="0.1.0",
     description="Standalone market intelligence -> PESTEL -> temporal scenario -> quantum receipt API.",
 )
@@ -46,7 +46,7 @@ def adapter(settings: Annotated[Settings, Depends(get_settings)]) -> SourceAdapt
 @app.get("/")
 async def root():
     return {
-        "service": "Q-Fin Scenario Engine API",
+        "service": "Q-FIN Scenario Engine API",
         "docs": "/docs",
         "health": "/api/health",
         "frontend": "http://127.0.0.1:5179",
@@ -63,7 +63,7 @@ async def health(settings: Annotated[Settings, Depends(get_settings)]):
         "sourceConfigured": settings.has_external_source,
         "sourceBaseUrl": settings.source_base_url,
         "engineConfigured": True,
-        "engineMode": "Q-Fin pipeline",
+        "engineMode": "Q-FIN pipeline",
     }
 
 
@@ -152,9 +152,9 @@ async def run_engine(
         except ValueError as exc:
             raise HTTPException(status_code=502, detail=str(exc)) from exc
         except httpx.HTTPStatusError as exc:
-            raise HTTPException(status_code=502, detail=f"QuantumFinances probability call failed: {exc.response.text}") from exc
+            raise HTTPException(status_code=502, detail=f"Q-FIN probability call failed: {exc.response.text}") from exc
         except httpx.HTTPError as exc:
-            raise HTTPException(status_code=502, detail=f"QuantumFinances probability call failed: {exc}") from exc
+            raise HTTPException(status_code=502, detail=f"Q-FIN probability call failed: {exc}") from exc
     else:
         decision = deterministic_decision(payload)
         scenarios = forecast_scenarios(series, decision.scenarioCount, decision.seed)
@@ -175,7 +175,8 @@ async def run_engine(
         integrity=IntegrityNote(
             status="local_quantum_receipt",
             message=(
-                "Quantum circuit receipt generated from the PESTEL-weighted scenario path. Attach a provider job ID to promote this receipt to verified hardware."
+                "This quantum circuit receipt was generated from the PESTEL-weighted scenario path. "
+                "Link a hardware provider job ID to upgrade it to a verified run."
             ),
             hardwareClaimAllowed=False,
         ),

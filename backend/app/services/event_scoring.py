@@ -76,7 +76,7 @@ def score_event(
         vectorFit=clamp(vector_fit),
         plausibilityFactor=1.0,
         calibrationLabel="Vector baseline",
-        explanation="Local vector baseline used only when OpenAI probability generation is disabled.",
+        explanation="Local vector baseline used when AI probability generation is disabled.",
         dimensionWeights=weights,
         scenarioSimilarities=similarities,
     )

@@ -1,1 +1,1 @@
-"""Scenario engine services for Q-Fins."""
+"""Scenario engine services for Q-FIN."""

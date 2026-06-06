@@ -1,8 +1,8 @@
-# Q-Fin
+# Q-FIN
 
 Standalone scenario engine for market intelligence snapshots, PESTEL vectors, future scenario branches, event probability scoring, and quantum circuit receipts.
 
-QuantumFinances can run from bundled sample snapshots or from a configured external JSON snapshot source. No private upstream system is required for the public platform.
+Q-FIN can run from bundled sample snapshots or from a configured external JSON snapshot source. No private upstream system is required for the public platform.
 
 ## Structure
 

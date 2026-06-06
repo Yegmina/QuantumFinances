@@ -4,7 +4,7 @@
       <div class="brand-mark">
         <span class="brand-icon" aria-hidden="true"></span>
         <div>
-          <p class="brand-name">Q-Fin</p>
+          <p class="brand-name">Q-FIN</p>
           <p class="brand-tag">Scenario intelligence</p>
         </div>
       </div>
@@ -12,9 +12,9 @@
 
     <section class="hero">
       <div class="hero-copy reveal reveal-delay-1">
-        <p class="eyebrow">Future probability</p>
+        <p class="eyebrow">Event probability</p>
         <h1>See what <em>comes next</em> before the market does.</h1>
-        <p class="lead">Market snapshots become PESTEL world-states, branching futures, and a calibrated event probability — sealed with a quantum circuit receipt.</p>
+        <p class="lead">Turn market snapshots into weekly PESTEL states, branching futures, and a calibrated event probability — each run sealed with a quantum circuit receipt.</p>
       </div>
       <aside class="hero-stat reveal reveal-delay-2">
         <span class="hero-stat-value">{{ result ? formatPercent(result.eventProbability.probability) : "—" }}</span>
@@ -25,8 +25,8 @@
     <section class="panel reveal reveal-delay-3">
       <div class="panel-heading compact">
         <div>
-          <p class="section-kicker">Intelligence windows</p>
-          <h2>Select market snapshots</h2>
+          <p class="section-kicker">Market periods</p>
+          <h2>Select snapshots</h2>
         </div>
         <button type="button" @click="loadInitialState">Refresh</button>
       </div>
@@ -50,8 +50,8 @@
         <textarea id="eventText" v-model="eventText" rows="4" placeholder="What outcome are you evaluating?"></textarea>
 
         <div class="ai-note">
-          <strong>Engine decides</strong>
-          <span>Scenario count, calibration weights, future vectors, and probability scoring — automatically.</span>
+          <strong>Q-FIN decides</strong>
+          <span>Scenario count, calibration weights, future vectors, and the probability score are set automatically.</span>
         </div>
 
         <button
@@ -60,7 +60,7 @@
           :disabled="running || !ready"
           @click="runEngine"
         >
-          {{ running ? "Analysing scenarios…" : "Run scenario analysis" }}
+          {{ running ? "Analyzing scenarios…" : "Run scenario analysis" }}
         </button>
       </article>
 
@@ -69,7 +69,7 @@
         <h2>{{ probabilitySentenceText }}</h2>
         <p v-if="result" class="presentation-number">{{ formatPercent(result.eventProbability.probability) }}</p>
         <p class="presentation-copy">
-          {{ result ? result.eventProbability.calibrationLabel : "PESTEL calibration, temporal branching, and weighted event similarity — ready when you are." }}
+          {{ result ? result.eventProbability.calibrationLabel : "Weekly PESTEL calibration, future branching, and weighted event matching. Run an analysis to see your probability." }}
         </p>
       </article>
     </section>
@@ -78,7 +78,7 @@
       <div class="panel-heading">
         <div>
           <p class="section-kicker">Pipeline</p>
-          <h2>From source graph to probability</h2>
+          <h2>From market graph to probability</h2>
         </div>
       </div>
 
@@ -149,7 +149,7 @@
               <strong>{{ formatPercent(scenario.probability) }}</strong>
             </div>
           </div>
-          <p v-else class="muted">Run the analysis to branch into future PESTEL states.</p>
+          <p v-else class="muted">Run an analysis to explore future PESTEL states.</p>
         </article>
 
         <article class="viz-block">
@@ -162,13 +162,13 @@
               <b>{{ formatPercent(value) }}</b>
             </div>
           </div>
-          <p v-else class="muted">Your event becomes an interest vector for weighted comparison.</p>
+          <p v-else class="muted">Your event is scored against each scenario using weighted similarity.</p>
         </article>
 
         <article class="viz-block result-block">
           <p class="section-kicker">Result</p>
           <h3>{{ result ? formatPercent(result.eventProbability.probability) : "—" }}</h3>
-          <p class="muted">{{ result ? result.eventProbability.explanation : "Scenario fit combined with event plausibility." }}</p>
+          <p class="muted">{{ result ? result.eventProbability.explanation : "Combines scenario fit with event plausibility." }}</p>
           <div v-if="result" class="score-formula">
             <span>Vector fit</span><strong>{{ formatPercent(result.eventProbability.vectorFit) }}</strong>
             <span>Plausibility</span><strong>{{ formatPercent(result.eventProbability.plausibilityFactor) }}</strong>
@@ -182,7 +182,7 @@
       <div class="panel-heading">
         <div>
           <p class="section-kicker">Timeline</p>
-          <h2>Weekly world-state vectors</h2>
+          <h2>Weekly PESTEL snapshots</h2>
         </div>
         <button type="button" @click="loadSeries">Rebuild</button>
       </div>
@@ -202,7 +202,7 @@
     <section v-if="result" class="results-grid">
       <article class="panel">
         <p class="section-kicker">Forecast</p>
-        <h2>Alternative future vectors</h2>
+        <h2>Possible futures</h2>
         <div class="scenario-list">
           <div v-for="scenario in result.forecastScenarios" :key="scenario.id" class="scenario-card">
             <div class="scenario-head">
@@ -237,7 +237,7 @@
 
       <article class="panel">
         <p class="section-kicker">Calibration</p>
-        <h2>Engine parameters</h2>
+        <h2>Analysis settings</h2>
         <p class="muted">{{ result.engineDecision.rationale }}</p>
         <div class="decision-grid">
           <div><span>Scenarios</span><strong>{{ result.engineDecision.scenarioCount }}</strong></div>
@@ -278,7 +278,7 @@
     </section>
 
     <footer v-if="result" class="site-footer">
-      <strong>Verified receipt</strong> — {{ result.integrity.message }}
+      <strong>Quantum receipt</strong> — {{ result.integrity.message }}
     </footer>
   </div>
 </template>
@@ -319,9 +319,9 @@ const pipelineStages = computed(() => [
   { index: "01", label: "Snapshots", value: `${series.value.length || selectedSnapshotIds.value.length} weeks` },
   { index: "02", label: "Cluster graph", value: `${graphMetrics.value.clusters} clusters` },
   { index: "03", label: "PESTEL vectors", value: "P E S T E L" },
-  { index: "04", label: "Future branches", value: result.value ? `${result.value.forecastScenarios.length} scenarios` : "pending" },
-  { index: "05", label: "Event similarity", value: result.value ? formatPercent(result.value.eventProbability.probability) : "pending" },
-  { index: "06", label: "Circuit receipt", value: result.value?.quantumRun.localRunId || "pending" }
+  { index: "04", label: "Future branches", value: result.value ? `${result.value.forecastScenarios.length} scenarios` : "Awaiting run" },
+  { index: "05", label: "Event similarity", value: result.value ? formatPercent(result.value.eventProbability.probability) : "Awaiting run" },
+  { index: "06", label: "Circuit receipt", value: result.value?.quantumRun.localRunId || "Awaiting run" }
 ]);
 
 function heatStyle(value) {

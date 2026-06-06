@@ -15,7 +15,7 @@ export function formatPercent(value) {
 }
 
 export function probabilitySentence(result) {
-  if (!result) return "Awaiting Q-Fins run";
+  if (!result) return "Awaiting Q-FIN analysis";
   return `${formatPercent(result.eventProbability.probability)} event probability`;
 }
 

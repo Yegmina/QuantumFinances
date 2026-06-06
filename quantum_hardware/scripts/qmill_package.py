@@ -14,7 +14,7 @@ from common import (
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Export a QuantumFinances circuit package for QMill workflows.")
+    parser = argparse.ArgumentParser(description="Export a Q-FIN circuit package for QMill workflows.")
     parser.add_argument("--input", default=str(Path(__file__).resolve().parents[1] / "inputs" / "sample_run.json"))
     parser.add_argument("--out", default=str(Path(__file__).resolve().parents[1] / "exports" / "qmill_package"))
     parser.add_argument("--measure-all", action="store_true")

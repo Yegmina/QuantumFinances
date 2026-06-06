@@ -1,6 +1,6 @@
-# **Q-Fin** Hardware Preparation
+# Q-FIN Hardware Preparation
 
-This folder prepares a QuantumFinances scenario run for real quantum-computer execution.
+This folder prepares a Q-FIN scenario run for real quantum-computer execution.
 
 Default behavior is intentionally dry-run. A real hardware job is submitted only when a provider script is run with `--submit`.
 
@@ -18,7 +18,7 @@ Default behavior is intentionally dry-run. A real hardware job is submitted only
 
 ## 1. Create A Hardware Payload
 
-Start the QuantumFinances backend, then export one run:
+Start the Q-FIN backend, then export one run:
 
 ```powershell
 cd quantum_hardware
@@ -90,7 +90,7 @@ Generate an API token from the IQM Resonance dashboard, then run:
 wsl bash -lc 'cd /mnt/c/path/to/QuantumFinances && export IQM_TOKEN="your-token" && ~/qf-miniconda/bin/python quantum_hardware/scripts/check_iqm_account.py'
 ```
 
-Dry-run the QuantumFinances circuit:
+Dry-run the Q-FIN circuit:
 
 ```powershell
 wsl bash -lc 'cd /mnt/c/path/to/QuantumFinances && ~/qf-miniconda/bin/python quantum_hardware/scripts/iqm_qiskit_submit.py --input quantum_hardware/inputs/latest_run.json --dry-run --shots 128'

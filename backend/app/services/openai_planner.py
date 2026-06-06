@@ -258,8 +258,8 @@ def apply_calibrated_weeks(series: list[WeeklyPestelState], plan: OpenAiScenario
 def deterministic_decision(payload: RunRequest) -> EngineDecision:
     return EngineDecision(
         source="local_baseline",
-        model="Q-Fin temporal vector engine",
-        rationale="Q-Fin used the weekly PESTEL trajectory, graph intensity, event text, and weighted vector similarity to complete this scenario path.",
+        model="Q-FIN temporal vector engine",
+        rationale="Q-FIN used the weekly PESTEL trajectory, graph intensity, event text, and weighted vector similarity to complete this scenario path.",
         confidence=0.5,
         scenarioCount=payload.scenarioCount,
         shots=payload.shots,
@@ -294,7 +294,7 @@ async def generate_openai_plan(
         "weeklySourcePestelSeries": [_compact_week(state) for state in series],
     }
     system_prompt = (
-        "You are the QuantumFinances scenario engine. Decide the PESTEL weights, event vector, "
+        "You are the Q-FIN scenario engine. Decide the PESTEL weights, event vector, "
         "weekly PESTEL calibration, next-week future scenarios, scenario probabilities, "
         "event probability, quantum shot count, and seed from the provided source graph summaries. "
         "Return calibrated numeric values in 0..1 for PESTEL dimensions. "
@@ -344,7 +344,7 @@ async def generate_openai_plan(
     try:
         plan = OpenAiScenarioPlan.model_validate_json(_extract_output_text(raw))
     except (ValidationError, ValueError, json.JSONDecodeError) as exc:
-        raise ValueError(f"OpenAI returned an invalid Q-Fins plan: {exc}") from exc
+        raise ValueError(f"OpenAI returned an invalid Q-FIN plan: {exc}") from exc
 
     scenarios = _normalized_scenarios(plan.forecastScenarios, plan.scenarioCount)
     calibrated_series = apply_calibrated_weeks(series, plan)

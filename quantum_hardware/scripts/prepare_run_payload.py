@@ -15,7 +15,7 @@ def post_json(url: str, payload: dict, timeout: int) -> dict:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Export a QuantumFinances run payload for hardware execution.")
+    parser = argparse.ArgumentParser(description="Export a Q-FIN run payload for hardware execution.")
     parser.add_argument("--backend-url", default=os.getenv("QUANTUMFINANCES_BACKEND_URL", "http://127.0.0.1:8088"))
     parser.add_argument("--event", required=True)
     parser.add_argument("--out", default=str(Path(__file__).resolve().parents[1] / "inputs" / "latest_run.json"))
