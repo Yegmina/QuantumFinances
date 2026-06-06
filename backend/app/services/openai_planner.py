@@ -60,9 +60,8 @@ SCENARIO_PLAN_SCHEMA = {
                 "properties": {
                     "weekId": {"type": "string"},
                     "pestel": PESTEL_SCHEMA,
-                    "reasoning": {"type": "string"},
                 },
-                "required": ["weekId", "pestel", "reasoning"],
+                "required": ["weekId", "pestel"],
             },
         },
         "forecastScenarios": {
@@ -128,7 +127,6 @@ SCENARIO_PLAN_SCHEMA = {
 class CalibratedWeekPlan(BaseModel):
     weekId: str
     pestel: PestelVector
-    reasoning: str
 
 
 class OpenAiScenarioPlan(BaseModel):
@@ -297,6 +295,8 @@ async def generate_openai_plan(
         "You are the QuantumFinances scenario engine. Decide the PESTEL weights, event vector, "
         "weekly PESTEL calibration, next-week future scenarios, scenario probabilities, "
         "event probability, quantum shot count, and seed from the provided source graph summaries. "
+        "Return calibratedWeeks for every input week, but include only weekId and pestel; do not include "
+        "per-week reasoning. Keep all rationale and explanations concise. "
         "Return calibrated numeric values in 0..1 for PESTEL dimensions. "
         "Return scenario probabilities that sum to 1. Use the requested scenario count unless the "
         "data strongly suggests a nearby count between 2 and 8. Keep shots between 512 and 4096 "
@@ -326,7 +326,7 @@ async def generate_openai_plan(
             }
         },
         "reasoning": {"effort": "low"},
-        "max_output_tokens": 4000,
+        "max_output_tokens": 16000,
     }
 
     async with httpx.AsyncClient(timeout=settings.request_timeout_seconds) as client:
