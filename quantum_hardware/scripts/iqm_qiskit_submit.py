@@ -16,13 +16,29 @@ from common import (
 )
 
 
+DEFAULT_IQM_SERVER_URL = "https://resonance.iqm.tech"
+DEFAULT_IQM_QUANTUM_COMPUTER = "sirius"
+
+
+def import_iqm_provider():
+    try:
+        from iqm.qiskit_iqm import IQMProvider
+    except Exception as exc:
+        raise SystemExit(
+            "Could not import IQMProvider. Install the Resonance stack with "
+            "`pip install \"iqm-client[qiskit]\"`. If Windows installation fails, use WSL, qBraid, or Colab.\n"
+            f"Import error: {exc}"
+        ) from exc
+    return IQMProvider
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Submit a QuantumFinances circuit through Qiskit-on-IQM.")
     parser.add_argument("--input", default=str(Path(__file__).resolve().parents[1] / "inputs" / "sample_run.json"))
     parser.add_argument("--out", default="")
     parser.add_argument("--shots", type=int, default=256)
-    parser.add_argument("--server-url", default=os.getenv("IQM_SERVER_URL", ""))
-    parser.add_argument("--quantum-computer", default=os.getenv("IQM_QUANTUM_COMPUTER", ""))
+    parser.add_argument("--server-url", default=os.getenv("IQM_SERVER_URL", DEFAULT_IQM_SERVER_URL))
+    parser.add_argument("--quantum-computer", default=os.getenv("IQM_QUANTUM_COMPUTER", DEFAULT_IQM_QUANTUM_COMPUTER))
     parser.add_argument("--backend", default=os.getenv("IQM_BACKEND", ""))
     parser.add_argument("--token", default=os.getenv("IQM_TOKEN", ""))
     parser.add_argument("--tokens-file", default=os.getenv("IQM_TOKENS_FILE", ""))
@@ -61,15 +77,17 @@ def main() -> None:
     if not args.submit:
         write_json(output_path, receipt)
         print(f"IQM dry-run receipt written: {output_path}")
-        print("Set IQM_SERVER_URL/IQM_QUANTUM_COMPUTER and add --submit to run on IQM.")
+        print("Set IQM_TOKEN and add --submit to run on IQM Resonance.")
         return
 
     if not args.server_url:
         raise SystemExit("IQM_SERVER_URL or --server-url is required for submission.")
+    if not args.token and not os.getenv("IQM_TOKEN"):
+        raise SystemExit("IQM_TOKEN is required for Resonance submission. Generate it in the IQM Resonance dashboard first.")
 
-    from iqm.qiskit_iqm import IQMProvider
     from qiskit import transpile
 
+    IQMProvider = import_iqm_provider()
     provider_kwargs = {}
     if args.quantum_computer:
         provider_kwargs["quantum_computer"] = args.quantum_computer

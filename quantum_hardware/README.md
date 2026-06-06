@@ -74,10 +74,36 @@ Keep the first hardware run tiny. IBM Open Plan access is limited, so 128-256 sh
 
 ## 3. IQM Quantum Stack
 
-Install dependencies:
+IQM Resonance uses `https://resonance.iqm.tech` plus a quantum-computer name such as `sirius`, `emerald`, or `garnet`. The official Qiskit path is provided by `iqm-client[qiskit]`.
+
+On this Windows machine the latest IQM stack installs cleanly in WSL, not in native Windows Python. The WSL runtime is already prepared at:
+
+```text
+~/qf-miniconda/bin/python
+```
+
+Generate an API token from the IQM Resonance dashboard, then run:
 
 ```powershell
-py -m venv .venv-iqm
+wsl bash -lc 'cd /mnt/c/path/to/QuantumFinances && export IQM_TOKEN="your-token" && ~/qf-miniconda/bin/python quantum_hardware/scripts/check_iqm_account.py'
+```
+
+Dry-run the QuantumFinances circuit:
+
+```powershell
+wsl bash -lc 'cd /mnt/c/path/to/QuantumFinances && ~/qf-miniconda/bin/python quantum_hardware/scripts/iqm_qiskit_submit.py --input quantum_hardware/inputs/latest_run.json --dry-run --shots 128'
+```
+
+Submit to IQM Sirius:
+
+```powershell
+wsl bash -lc 'cd /mnt/c/path/to/QuantumFinances && export IQM_TOKEN="your-token" && ~/qf-miniconda/bin/python quantum_hardware/scripts/iqm_qiskit_submit.py --input quantum_hardware/inputs/latest_run.json --shots 128 --submit --wait'
+```
+
+For a clean non-WSL setup, install dependencies:
+
+```powershell
+py -3.13 -m venv .venv-iqm
 .\.venv-iqm\Scripts\Activate.ps1
 pip install -r requirements-iqm.txt
 ```
@@ -85,8 +111,8 @@ pip install -r requirements-iqm.txt
 Prepare provider settings from the hackathon pack:
 
 ```powershell
-$env:IQM_SERVER_URL="https://..."
-$env:IQM_QUANTUM_COMPUTER="..."
+$env:IQM_SERVER_URL="https://resonance.iqm.tech"
+$env:IQM_QUANTUM_COMPUTER="sirius"
 $env:IQM_BACKEND="..."
 $env:IQM_TOKEN="your-token"
 ```
