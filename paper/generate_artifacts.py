@@ -133,22 +133,23 @@ def plot_counts(receipt: dict[str, Any]) -> None:
 
 def plot_pipeline() -> None:
     labels = [
-        "News snapshots",
-        "TRSG clusters",
-        "Weekly PESTEL",
-        "Temporal QML",
-        "IQM sampling",
-        "Scenario probabilities",
+        "Weekly news\ngraphs",
+        "PESTEL +\nembeddings",
+        "Temporal\ntargets",
+        "Quantum\nfeature map",
+        "IQM\nexecution",
+        "Scenario\ndistribution",
     ]
     plt.figure(figsize=(10, 2.6))
     ax = plt.gca()
     ax.axis("off")
-    x_positions = np.linspace(0.05, 0.90, len(labels))
+    box_width = 0.115
+    x_positions = np.linspace(0.04, 0.84, len(labels))
     for index, (x, label) in enumerate(zip(x_positions, labels, strict=True)):
-        ax.add_patch(plt.Rectangle((x, 0.37), 0.12, 0.26, fill=True, color="#F2F6FA", ec="#123A5A", lw=1.4))
-        ax.text(x + 0.06, 0.50, label, ha="center", va="center", fontsize=8.6, wrap=True)
+        ax.add_patch(plt.Rectangle((x, 0.37), box_width, 0.26, fill=True, color="#F2F6FA", ec="#123A5A", lw=1.4))
+        ax.text(x + box_width / 2, 0.50, label, ha="center", va="center", fontsize=8.4, wrap=True)
         if index < len(labels) - 1:
-            ax.annotate("", xy=(x_positions[index + 1] - 0.01, 0.50), xytext=(x + 0.13, 0.50), arrowprops={"arrowstyle": "->", "lw": 1.4, "color": "#123A5A"})
+            ax.annotate("", xy=(x_positions[index + 1] - 0.01, 0.50), xytext=(x + box_width + 0.01, 0.50), arrowprops={"arrowstyle": "->", "lw": 1.4, "color": "#123A5A"})
     ax.set_title("Q-ORACLE Experimental Pipeline", fontsize=12, weight="bold")
     plt.tight_layout()
     plt.savefig(FIGURES / "qoracle_pipeline.png", dpi=220)
@@ -298,16 +299,6 @@ def write_tables(payload: dict[str, Any], feature_receipt: dict[str, Any], qml_r
         )
     pestel_latest = payload.get("weeklyPestelSeries", [])[-1].get("pestel", {})
     pestel_rows = [f"{key.title()} & {percent(pestel_latest.get(key, 0.0)):.1f}\\% \\\\" for key in PESTEL_KEYS]
-    counts = qml_receipt.get("counts") or {}
-    count_rows = [f"{bit} & {counts.get(bit, 0)} & {percent((counts.get(bit, 0) / max(1, sum(counts.values())))):.1f}\\% \\\\" for bit in ["00", "01", "10", "11"]]
-    batch_summary = load_json(ROOT / "quantum_hardware" / "experiments" / "iqm_qml_batch_summary.json")
-    batch_records = batch_summary.get("records", [])
-    real_batch_records = [
-        item for item in batch_records if item.get("hardwareJobSubmitted") and sum((item.get("counts") or {}).values()) > 0
-    ]
-    batch_mode = "IQM hardware" if real_batch_records else "Dry-run"
-    batch_count = len(real_batch_records) if real_batch_records else len(batch_records)
-    batch_shots = sum(int(item.get("shots", 0)) for item in (real_batch_records if real_batch_records else batch_records))
     semantic_records = [item for item in semantic_summary_records() if item.get("returnCode") == 0]
     semantic_stats = semantic_group_stats(semantic_records)
     semantic_jobs = len([item for item in semantic_records if item.get("hardwareJobSubmitted")])
@@ -355,49 +346,6 @@ Dimension & Latest value \\
 \end{tabular}
 \caption{Latest weekly PESTEL vector used for feature encoding.}
 \label{tab:pestel-latest}
-\end{table}
-
-\begin{table}[t]
-\centering
-\small
-\begin{tabular}{lrr}
-\toprule
-Bitstring & Count & Share \\
-\midrule
-""" + "\n".join(count_rows) + r"""
-\bottomrule
-\end{tabular}
-\caption{Raw IQM temporal-QML hardware counts.}
-\label{tab:counts}
-\end{table}
-
-\begin{table}[t]
-\centering
-\scriptsize
-\begin{tabular}{lp{0.38\columnwidth}r}
-\toprule
-Experiment & Job ID & Shots \\
-\midrule
-Feature circuit & """ + str(feature_receipt.get("jobId", "")) + r""" & """ + str(feature_receipt.get("shots", "")) + r""" \\
-Temporal QML & """ + str(qml_receipt.get("jobId", "")) + r""" & """ + str(qml_receipt.get("shots", "")) + r""" \\
-\bottomrule
-\end{tabular}
-\caption{Verified IQM hardware jobs available at paper-generation time.}
-\label{tab:hardware-jobs}
-\end{table}
-
-\begin{table}[t]
-\centering
-\small
-\begin{tabular}{lr}
-\toprule
-Batch mode & """ + batch_mode + r""" \\
-Records & """ + str(batch_count) + r""" \\
-Total shots & """ + str(batch_shots) + r""" \\
-\bottomrule
-\end{tabular}
-\caption{Automatic temporal-QML batch summary used for the seed-sensitivity figure.}
-\label{tab:batch-summary}
 \end{table}
 
 \begin{table}[t]
