@@ -114,7 +114,7 @@ The experiment uses three weekly graph snapshots from the QuantumFinances payloa
 \label{fig:pestel}
 \end{figure}
 
-All semantic circuits are submitted to IQM Sirius through the Qiskit-on-IQM stack. A run is counted as hardware-backed only when a receipt contains provider, backend, job identifier, circuit fingerprint, shot count and returned counts.
+All semantic circuits are submitted to IQM Sirius through the Qiskit-on-IQM stack, which exposes IQM Resonance hardware through Qiskit provider and backend interfaces~\cite{iqm2026qiskit}. A run is counted as hardware-backed only when a receipt contains provider, backend, job identifier, circuit fingerprint, shot count and returned counts.
 
 \section{Results}
 \input{data/tables.tex}
@@ -146,6 +146,27 @@ The semantic experiment submits 18 jobs: three latent sizes, three seeds and two
 \label{fig:semanticshots}
 \end{figure}
 
+\clearpage
+\onecolumn
+\subsection{Operational Evidence}
+The experimental trail is represented by two artifact layers. The numerical layer is the set of JSON receipts and batch tables used above. The operational layer is shown in Figures~\ref{fig:appscreen} and~\ref{fig:iqmscreen}: the local scenario interface renders the complete PESTEL-to-scenario path, and IQM Resonance records the completed hardware jobs on IQM Sirius.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/qoracle_app_pipeline_screen.png}
+\caption{QuantumFinances scenario interface after a completed run, showing source snapshots, PESTEL vectors, future branches, event scoring and circuit receipt in one audit view.}
+\label{fig:appscreen}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/iqm_resonance_dashboard.png}
+\caption{IQM Resonance dashboard after the hardware batch, showing available quantum computers and completed IQM Sirius jobs corresponding to the submitted experiment sequence.}
+\label{fig:iqmscreen}
+\end{figure}
+
+\clearpage
+\twocolumn
 \section{Discussion}
 The results show that an auditable news-graph state can be carried through a semantic temporal representation, projected into shallow quantum feature maps and executed repeatedly on a real QPU. The strongest empirical signal is methodological: all 18 semantic jobs completed successfully, and the generated artifacts preserve a trace from input run to embeddings, circuit parameters, provider job identifiers and measured counts.
 
@@ -157,7 +178,7 @@ The current data set is intentionally small: three weekly snapshots provide only
 \section{Conclusion}
 Q-ORACLE connects ORACLE-style weekly news graph foresight to hardware-executed temporal QML. The system derives PESTEL and semantic weekly states, projects 1024-dimensional embeddings into small quantum feature maps, trains shallow temporal circuits and samples scenario registers on IQM Sirius. The present study contributes a reproducible method and hardware evidence for linking narrative intelligence, semantic vectors and near-term quantum processors. Future work should replace the three-week sample with a longer live archive, compare against classical temporal baselines and evaluate whether hardware-sampled scenario distributions add value beyond transparent classical models.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \bibitem{oracle2025}
 L. Kharlashkin, E. Morooka, Y. Tereshchenko, and M. Hamalainen.
 \newblock ORACLE: Time-Dependent Recursive Summary Graphs for Foresight on News Data Using LLMs.
@@ -197,6 +218,12 @@ M. Schuld and N. Killoran.
 M. Larocca et al.
 \newblock A Review of Barren Plateaus in Variational Quantum Computing.
 \newblock arXiv:2405.00781, 2024.
+
+\bibitem{iqm2026qiskit}
+IQM.
+\newblock Qiskit on IQM User Guide.
+\newblock IQM Client Documentation, 2026.
+\newblock \url{https://docs.iqm.tech/iqm-client/user_guide_qiskit.html}.
 \end{thebibliography}
 
 \end{document}
