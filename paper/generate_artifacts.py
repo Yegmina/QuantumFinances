@@ -161,8 +161,16 @@ def plot_batch() -> None:
     summary = load_json(summary_path)
     records = summary.get("records", [])
     seeds = [str(item.get("seed")) for item in records if item.get("shots") == 128]
-    stable = [percent(((item.get("inferenceProbabilities") or {}).get("stable", 0.0))) for item in records if item.get("shots") == 128]
-    up = [percent(((item.get("inferenceProbabilities") or {}).get("aligned_up", 0.0))) for item in records if item.get("shots") == 128]
+    selected = [item for item in records if item.get("shots") == 128]
+    has_hardware = any(item.get("hardwareJobSubmitted") and sum((item.get("counts") or {}).values()) > 0 for item in selected)
+
+    def probabilities(record: dict[str, Any]) -> dict[str, float]:
+        if has_hardware and record.get("hardwareJobSubmitted") and sum((record.get("counts") or {}).values()) > 0:
+            return record.get("hardwareProbabilities") or {}
+        return record.get("inferenceProbabilities") or {}
+
+    stable = [percent(probabilities(item).get("stable", 0.0)) for item in selected]
+    up = [percent(probabilities(item).get("aligned_up", 0.0)) for item in selected]
     if not seeds:
         return
     x = np.arange(len(seeds))
@@ -171,8 +179,8 @@ def plot_batch() -> None:
     plt.plot(x, up, marker="o", label="Aligned up", color="#287D56")
     plt.xticks(x, seeds)
     plt.xlabel("Training seed")
-    plt.ylabel("Local QML probability (%)")
-    plt.title("Batch Temporal QML Sensitivity Across Seeds")
+    plt.ylabel(("IQM hardware" if has_hardware else "Local QML") + " probability (%)")
+    plt.title(("Hardware" if has_hardware else "Dry-run") + " Batch Temporal QML Sensitivity Across Seeds")
     plt.grid(True, axis="y", alpha=0.25)
     plt.legend()
     plt.tight_layout()
@@ -191,6 +199,14 @@ def write_tables(payload: dict[str, Any], feature_receipt: dict[str, Any], qml_r
     pestel_rows = [f"{key.title()} & {percent(pestel_latest.get(key, 0.0)):.1f}\\% \\\\" for key in PESTEL_KEYS]
     counts = qml_receipt.get("counts") or {}
     count_rows = [f"{bit} & {counts.get(bit, 0)} & {percent((counts.get(bit, 0) / max(1, sum(counts.values())))):.1f}\\% \\\\" for bit in ["00", "01", "10", "11"]]
+    batch_summary = load_json(ROOT / "quantum_hardware" / "experiments" / "iqm_qml_batch_summary.json")
+    batch_records = batch_summary.get("records", [])
+    real_batch_records = [
+        item for item in batch_records if item.get("hardwareJobSubmitted") and sum((item.get("counts") or {}).values()) > 0
+    ]
+    batch_mode = "IQM hardware" if real_batch_records else "Dry-run"
+    batch_count = len(real_batch_records) if real_batch_records else len(batch_records)
+    batch_shots = sum(int(item.get("shots", 0)) for item in (real_batch_records if real_batch_records else batch_records))
 
     tex = r"""
 \begin{table}[t]
@@ -248,6 +264,20 @@ Temporal QML & """ + str(qml_receipt.get("jobId", "")) + r""" & """ + str(qml_re
 \end{tabular}
 \caption{Verified IQM hardware jobs available at paper-generation time.}
 \label{tab:hardware-jobs}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+Batch mode & """ + batch_mode + r""" \\
+Records & """ + str(batch_count) + r""" \\
+Total shots & """ + str(batch_shots) + r""" \\
+\bottomrule
+\end{tabular}
+\caption{Automatic temporal-QML batch summary used for the seed-sensitivity figure.}
+\label{tab:batch-summary}
 \end{table}
 """
     (DATA / "tables.tex").write_text(tex, encoding="utf-8")

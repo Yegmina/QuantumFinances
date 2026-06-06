@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-06-06T17:26:28.365818+00:00",
+  "createdAt": "2026-06-06T17:47:21.478679+00:00",
   "input": "quantum_hardware/inputs/latest_run.json",
   "records": [
     {
@@ -20,12 +20,12 @@
       },
       "iterations": 60,
       "jobId": "",
-      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_94c9532c422ce08e.json",
+      "receiptPath": "quantum_hardware/receipts/iqm_qml_batch_dryrun_seed41_shots64_20260606T174713Z.json",
       "returnCode": 0,
       "seed": 41,
       "shots": 64,
       "stderr": "",
-      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_94c9532c422ce08e.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "stdout": "IQM temporal QML dry-run receipt written: <repo>/quantum_hardware/receipts/iqm_qml_batch_dryrun_seed41_shots64_20260606T174713Z.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
       "trainingHistory": [
         {
           "iteration": 0,
@@ -76,12 +76,12 @@
       },
       "iterations": 60,
       "jobId": "",
-      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_94c9532c422ce08e.json",
+      "receiptPath": "quantum_hardware/receipts/iqm_qml_batch_dryrun_seed41_shots128_20260606T174715Z.json",
       "returnCode": 0,
       "seed": 41,
       "shots": 128,
       "stderr": "",
-      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_94c9532c422ce08e.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "stdout": "IQM temporal QML dry-run receipt written: <repo>/quantum_hardware/receipts/iqm_qml_batch_dryrun_seed41_shots128_20260606T174715Z.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
       "trainingHistory": [
         {
           "iteration": 0,
@@ -132,12 +132,12 @@
       },
       "iterations": 60,
       "jobId": "",
-      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_660a54b86534f27a.json",
+      "receiptPath": "quantum_hardware/receipts/iqm_qml_batch_dryrun_seed42_shots64_20260606T174715Z.json",
       "returnCode": 0,
       "seed": 42,
       "shots": 64,
       "stderr": "",
-      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_660a54b86534f27a.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "stdout": "IQM temporal QML dry-run receipt written: <repo>/quantum_hardware/receipts/iqm_qml_batch_dryrun_seed42_shots64_20260606T174715Z.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
       "trainingHistory": [
         {
           "iteration": 0,
@@ -188,12 +188,12 @@
       },
       "iterations": 60,
       "jobId": "",
-      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_660a54b86534f27a.json",
+      "receiptPath": "quantum_hardware/receipts/iqm_qml_batch_dryrun_seed42_shots128_20260606T174716Z.json",
       "returnCode": 0,
       "seed": 42,
       "shots": 128,
       "stderr": "",
-      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_660a54b86534f27a.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "stdout": "IQM temporal QML dry-run receipt written: <repo>/quantum_hardware/receipts/iqm_qml_batch_dryrun_seed42_shots128_20260606T174716Z.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
       "trainingHistory": [
         {
           "iteration": 0,
@@ -244,12 +244,12 @@
       },
       "iterations": 60,
       "jobId": "",
-      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_14cbd6ba798fffda.json",
+      "receiptPath": "quantum_hardware/receipts/iqm_qml_batch_dryrun_seed43_shots64_20260606T174717Z.json",
       "returnCode": 0,
       "seed": 43,
       "shots": 64,
       "stderr": "",
-      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_14cbd6ba798fffda.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "stdout": "IQM temporal QML dry-run receipt written: <repo>/quantum_hardware/receipts/iqm_qml_batch_dryrun_seed43_shots64_20260606T174717Z.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
       "trainingHistory": [
         {
           "iteration": 0,
@@ -300,12 +300,12 @@
       },
       "iterations": 60,
       "jobId": "",
-      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_14cbd6ba798fffda.json",
+      "receiptPath": "quantum_hardware/receipts/iqm_qml_batch_dryrun_seed43_shots128_20260606T174717Z.json",
       "returnCode": 0,
       "seed": 43,
       "shots": 128,
       "stderr": "",
-      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_14cbd6ba798fffda.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "stdout": "IQM temporal QML dry-run receipt written: <repo>/quantum_hardware/receipts/iqm_qml_batch_dryrun_seed43_shots128_20260606T174717Z.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
       "trainingHistory": [
         {
           "iteration": 0,
@@ -356,12 +356,12 @@
       },
       "iterations": 60,
       "jobId": "",
-      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_a147735a5b560024.json",
+      "receiptPath": "quantum_hardware/receipts/iqm_qml_batch_dryrun_seed44_shots64_20260606T174718Z.json",
       "returnCode": 0,
       "seed": 44,
       "shots": 64,
       "stderr": "",
-      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_a147735a5b560024.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "stdout": "IQM temporal QML dry-run receipt written: <repo>/quantum_hardware/receipts/iqm_qml_batch_dryrun_seed44_shots64_20260606T174718Z.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
       "trainingHistory": [
         {
           "iteration": 0,
@@ -412,12 +412,12 @@
       },
       "iterations": 60,
       "jobId": "",
-      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_a147735a5b560024.json",
+      "receiptPath": "quantum_hardware/receipts/iqm_qml_batch_dryrun_seed44_shots128_20260606T174719Z.json",
       "returnCode": 0,
       "seed": 44,
       "shots": 128,
       "stderr": "",
-      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_a147735a5b560024.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "stdout": "IQM temporal QML dry-run receipt written: <repo>/quantum_hardware/receipts/iqm_qml_batch_dryrun_seed44_shots128_20260606T174719Z.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
       "trainingHistory": [
         {
           "iteration": 0,
@@ -468,12 +468,12 @@
       },
       "iterations": 60,
       "jobId": "",
-      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_24d13e829a6e10cd.json",
+      "receiptPath": "quantum_hardware/receipts/iqm_qml_batch_dryrun_seed45_shots64_20260606T174720Z.json",
       "returnCode": 0,
       "seed": 45,
       "shots": 64,
       "stderr": "",
-      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_24d13e829a6e10cd.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "stdout": "IQM temporal QML dry-run receipt written: <repo>/quantum_hardware/receipts/iqm_qml_batch_dryrun_seed45_shots64_20260606T174720Z.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
       "trainingHistory": [
         {
           "iteration": 0,
@@ -524,12 +524,12 @@
       },
       "iterations": 60,
       "jobId": "",
-      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_24d13e829a6e10cd.json",
+      "receiptPath": "quantum_hardware/receipts/iqm_qml_batch_dryrun_seed45_shots128_20260606T174720Z.json",
       "returnCode": 0,
       "seed": 45,
       "shots": 128,
       "stderr": "",
-      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_24d13e829a6e10cd.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "stdout": "IQM temporal QML dry-run receipt written: <repo>/quantum_hardware/receipts/iqm_qml_batch_dryrun_seed45_shots128_20260606T174720Z.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
       "trainingHistory": [
         {
           "iteration": 0,

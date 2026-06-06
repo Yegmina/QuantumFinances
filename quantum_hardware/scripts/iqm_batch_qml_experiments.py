@@ -41,13 +41,19 @@ def probabilities_from_counts(counts: dict[str, int]) -> dict[str, float]:
 
 def run_one(args: argparse.Namespace, seed: int, shots: int, iterations: int) -> dict[str, Any]:
     root = Path(__file__).resolve().parents[1]
+    repo_root = Path(__file__).resolve().parents[2]
     receipts_dir = root / "receipts"
     before = set(receipts_dir.glob("iqm_qml_*.json"))
+    mode = "hardware" if args.submit else "dryrun"
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    output_path = receipts_dir / f"iqm_qml_batch_{mode}_seed{seed}_shots{shots}_{stamp}.json"
     cmd = [
         sys.executable,
         str(Path(__file__).with_name("iqm_temporal_qml_submit.py")),
         "--input",
         args.input,
+        "--out",
+        str(output_path),
         "--shots",
         str(shots),
         "--iterations",
@@ -65,15 +71,27 @@ def run_one(args: argparse.Namespace, seed: int, shots: int, iterations: int) ->
         cmd.extend(["--quantum-computer", args.quantum_computer])
 
     completed = subprocess.run(cmd, cwd=str(Path(__file__).resolve().parents[2]), text=True, capture_output=True)
-    receipt_path = latest_receipt(before, receipts_dir)
+    receipt_path = output_path if output_path.exists() else latest_receipt(before, receipts_dir)
+
+    def display_path(path: Path | None) -> str:
+        if path is None:
+            return ""
+        try:
+            return path.relative_to(repo_root).as_posix()
+        except ValueError:
+            return str(path)
+
+    def scrub(text: str) -> str:
+        return text.replace(str(repo_root), "<repo>").replace(str(repo_root).replace("\\", "/"), "<repo>")
+
     record: dict[str, Any] = {
         "seed": seed,
         "shots": shots,
         "iterations": iterations,
         "returnCode": completed.returncode,
-        "stdout": completed.stdout.strip(),
-        "stderr": completed.stderr.strip(),
-        "receiptPath": str(receipt_path) if receipt_path else "",
+        "stdout": scrub(completed.stdout.strip()),
+        "stderr": scrub(completed.stderr.strip()),
+        "receiptPath": display_path(receipt_path),
     }
     if receipt_path and receipt_path.exists():
         receipt = read_json(receipt_path)

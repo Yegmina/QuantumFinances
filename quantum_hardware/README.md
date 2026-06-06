@@ -106,6 +106,14 @@ Submit the temporal QML circuit:
 wsl bash -lc 'cd /mnt/c/path/to/QuantumFinances && export IQM_TOKEN="your-token" && ~/qf-miniconda/bin/python quantum_hardware/scripts/iqm_temporal_qml_submit.py --input quantum_hardware/inputs/latest_run.json --shots 128 --iterations 60 --submit --wait'
 ```
 
+Run the automatic temporal QML batch and rebuild the paper:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File quantum_hardware\scripts\run_iqm_batch_and_build_paper.ps1
+```
+
+The runner prompts for the IQM Resonance token, sends the configured batch of temporal-QML jobs, regenerates the figures and tables, and renders `paper\build\main.pdf`.
+
 For a clean non-WSL setup, install dependencies:
 
 ```powershell
