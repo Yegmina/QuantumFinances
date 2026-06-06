@@ -92,19 +92,21 @@ def id_from_manifest_item(item: dict[str, Any], index: int) -> str:
     return str(item.get("label") or f"snapshot-{index + 1}")
 
 
-def build_series_from_manifest(manifest_url: str, base_url: str, snapshot_kind: str, token: str | None):
-    manifest = fetch_json(manifest_url, token=token)
+def build_series_from_manifest_data(manifest: Any, source_label: str, base_url: str, snapshot_kind: str, token: str | None):
     items = graph_items_from_manifest(manifest, snapshot_kind)
     if not items:
-        raise SystemExit(f"No {snapshot_kind} snapshots found in {manifest_url}")
+        raise SystemExit(f"No {snapshot_kind} snapshots found in {source_label}")
 
     series = []
     for index, item in enumerate(items):
-        raw_url = str(item.get("value") or item.get("url") or item.get("path"))
-        snapshot_url = urljoin(f"{base_url.rstrip('/')}/", raw_url)
         snapshot_id = id_from_manifest_item(item, index)
         label = str(item.get("label") or f"ORACLE {snapshot_id}")
-        snapshot = fetch_json(snapshot_url, token=token)
+        if isinstance(item.get(snapshot_kind), dict):
+            snapshot = item[snapshot_kind]
+        else:
+            raw_url = str(item.get("value") or item.get("url") or item.get("path"))
+            snapshot_url = urljoin(f"{base_url.rstrip('/')}/", raw_url)
+            snapshot = fetch_json(snapshot_url, token=token)
         series.append(
             extract_weekly_pestel(
                 snapshot_id=snapshot_id,
@@ -115,6 +117,11 @@ def build_series_from_manifest(manifest_url: str, base_url: str, snapshot_kind: 
         )
     series.sort(key=lambda item: item.weekId)
     return series, items
+
+
+def build_series_from_manifest(manifest_url: str, base_url: str, snapshot_kind: str, token: str | None):
+    manifest = fetch_json(manifest_url, token=token)
+    return build_series_from_manifest_data(manifest, manifest_url, base_url, snapshot_kind, token)
 
 
 def source_connection(snapshot_paths: list[tuple[str, Path]], oracle_dir: Path) -> SourceConnection:
@@ -130,7 +137,7 @@ def source_connection(snapshot_paths: list[tuple[str, Path]], oracle_dir: Path) 
     )
 
 
-def remote_source_connection(manifest_url: str, count: int) -> SourceConnection:
+def remote_source_connection(manifest_url: str | None, count: int) -> SourceConnection:
     return SourceConnection(
         mode="external",
         baseUrl="https://oraakkeli.metropolia.fi",
@@ -155,7 +162,18 @@ def run_id_for(event_text: str, series: list[Any], quantum_run_id: str) -> str:
 
 async def create_run(args: argparse.Namespace) -> RunResponse:
     source = None
-    if args.manifest_url:
+    if args.manifest_file:
+        manifest_path = Path(args.manifest_file)
+        manifest = load_json(manifest_path)
+        series, manifest_items = build_series_from_manifest_data(
+            manifest=manifest,
+            source_label=str(manifest_path),
+            base_url=args.base_url,
+            snapshot_kind=args.snapshot_kind,
+            token=None,
+        )
+        source = remote_source_connection(str(manifest_path), len(manifest_items))
+    elif args.manifest_url:
         token = os.getenv(args.auth_token_env) if args.auth_token_env else None
         if args.require_auth and not token:
             raise SystemExit(f"{args.auth_token_env} is required for {args.manifest_url}")
@@ -217,6 +235,7 @@ def main() -> None:
         help="Directory containing graph_YYYY-MM-DD.json ORACLE graph snapshots.",
     )
     parser.add_argument("--manifest-url", help="Authenticated ORACLE snapshot manifest URL, e.g. https://oraakkeli.metropolia.fi/api/snapshots")
+    parser.add_argument("--manifest-file", help="Local JSON export from the ORACLE /api/snapshots endpoint.")
     parser.add_argument("--base-url", default="https://oraakkeli.metropolia.fi", help="Base URL for manifest snapshot paths.")
     parser.add_argument("--snapshot-kind", choices=["graph", "hierarchy"], default="graph")
     parser.add_argument("--auth-token-env", default="ORACLE_AUTH_TOKEN", help="Environment variable containing ORACLE bearer token.")
