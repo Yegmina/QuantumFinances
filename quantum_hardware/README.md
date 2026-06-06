@@ -114,6 +114,48 @@ powershell -ExecutionPolicy Bypass -File quantum_hardware\scripts\run_iqm_batch_
 
 The runner prompts for the IQM Resonance token, sends the configured batch of temporal-QML jobs, regenerates the figures and tables, and renders `paper\build\main.pdf`.
 
+### Semantic Embedding QML
+
+The compact PESTEL QML path uses 6 PESTEL values. For the research path, use real non-OpenAI sentence embeddings first, then project those high-dimensional vectors into a hardware-sized quantum feature map. The preferred production path is to pass embeddings from the upstream intelligence platform directly in `latest_run.embeddings.json`; the local builder below is for research and demos when the raw cluster text is available.
+
+Build a semantic embedding payload from the ORACLE-style weekly cluster text:
+
+```powershell
+wsl bash -lc 'cd /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim && ~/qf-miniconda/bin/python -m pip install -r quantum_hardware/requirements-embeddings.txt'
+
+wsl bash -lc 'cd /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim && ~/qf-miniconda/bin/python quantum_hardware/scripts/build_semantic_embeddings.py --input quantum_hardware/inputs/latest_run.json --out quantum_hardware/inputs/latest_run.embeddings.json --model intfloat/multilingual-e5-large-instruct'
+```
+
+That produces `latest_run.embeddings.json` with the original embedding dimension recorded. The file is intentionally git-ignored because real embeddings can become large and may contain semantic information from source data.
+
+Model choices:
+
+- `sentence-transformers/all-MiniLM-L6-v2`: 384-dimensional bootstrap model for low-disk local tests.
+- `intfloat/multilingual-e5-large-instruct`: 1024-dimensional multilingual research model; requires more than 1 GB of free cache space.
+- `Qwen/Qwen3-Embedding-4B`: up to 2560 dimensions for a larger research run; use only with enough disk/RAM/GPU.
+
+The QPU still receives the projected circuit, not thousands of physical qubits. The receipt records both the original embedding dimension and the latent circuit size.
+
+Dry-run the semantic embedding QML circuit:
+
+```powershell
+wsl bash -lc 'cd /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim && ~/qf-miniconda/bin/python quantum_hardware/scripts/iqm_semantic_embedding_qml_submit.py --input quantum_hardware/inputs/latest_run.json --embeddings quantum_hardware/inputs/latest_run.embeddings.json --latent-dim 8 --shots 512 --iterations 120 --dry-run'
+```
+
+Submit one semantic embedding QML job:
+
+```powershell
+wsl bash -lc 'cd /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim && ~/qf-miniconda/bin/python quantum_hardware/scripts/iqm_semantic_embedding_qml_submit.py --input quantum_hardware/inputs/latest_run.json --embeddings quantum_hardware/inputs/latest_run.embeddings.json --latent-dim 8 --shots 512 --iterations 120 --submit --wait'
+```
+
+Run a research batch over seeds, shot counts, and circuit sizes:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File quantum_hardware\scripts\run_iqm_semantic_batch.ps1
+```
+
+The semantic runner uses the high-dimensional embeddings as the real data source, fits a transparent PCA plus seeded signed-random projection into `8..12` latent qubits by default, trains a variational classifier on week-to-week embedding transitions, and submits only the trained inference circuit to IQM hardware.
+
 For a clean non-WSL setup, install dependencies:
 
 ```powershell

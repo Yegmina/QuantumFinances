@@ -18,6 +18,7 @@ tmp/
 paper/build/*.aux
 paper/build/*.out
 quantum_hardware/inputs/latest_run.json
+quantum_hardware/inputs/*.embeddings.json
 quantum_hardware/receipts/*
 !quantum_hardware/receipts/.gitkeep
 quantum_hardware/exports/*
