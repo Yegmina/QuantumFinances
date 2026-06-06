@@ -64,12 +64,26 @@
         </button>
       </article>
 
-      <article class="panel presentation-panel reveal reveal-delay-5">
+      <article class="panel presentation-panel reveal reveal-delay-5" :class="{ 'has-result': !!result }">
         <p class="section-kicker">Probability</p>
-        <h2>{{ probabilitySentenceText }}</h2>
-        <p v-if="result" class="presentation-number">{{ formatPercent(result.eventProbability.probability) }}</p>
+
+        <div class="presentation-metric">
+          <span class="presentation-number" :class="{ 'is-placeholder': !result }">
+            {{ result ? formatPercent(result.eventProbability.probability) : "—" }}
+          </span>
+          <span class="presentation-unit">{{ result ? "event probability" : "awaiting analysis" }}</span>
+        </div>
+
+        <p class="presentation-headline">
+          {{ result ? result.eventProbability.calibrationLabel : "Run an analysis to calculate your probability" }}
+        </p>
+
         <p class="presentation-copy">
-          {{ result ? result.eventProbability.calibrationLabel : "Weekly PESTEL calibration, future branching, and weighted event matching. Run an analysis to see your probability." }}
+          {{
+            result
+              ? result.eventProbability.explanation
+              : "Q-FIN calibrates weekly PESTEL states, branches futures, and scores your event with weighted similarity."
+          }}
         </p>
       </article>
     </section>

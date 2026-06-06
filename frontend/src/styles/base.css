@@ -87,6 +87,7 @@ button,
 input,
 textarea {
   font: inherit;
+  resize: none;
 }
 
 button {
@@ -357,6 +358,7 @@ h3 {
 .results-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: start;
   gap: 20px;
   max-width: 1180px;
   margin: 0 auto 20px;
@@ -426,32 +428,88 @@ h3 {
   display: flex;
   min-height: 400px;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   border-color: rgba(0, 43, 92, 0.12);
   background:
-    radial-gradient(ellipse 90% 80% at 100% 100%, rgba(255, 102, 0, 0.08), transparent 55%),
+    radial-gradient(ellipse 90% 55% at 100% 0%, rgba(255, 102, 0, 0.1), transparent 60%),
     var(--pv-snow);
 }
 
-.presentation-panel h2 {
-  font-size: 1.25rem;
-  line-height: 1.4;
+.presentation-panel.has-result {
+  background:
+    radial-gradient(ellipse 85% 60% at 100% 0%, rgba(255, 102, 0, 0.14), transparent 58%),
+    var(--pv-snow);
+}
+
+.presentation-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+  margin: 4px 0 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--pv-line);
 }
 
 .presentation-number {
-  margin: 24px 0 16px;
   color: var(--pv-orange);
   font-family: var(--font-display);
   font-size: clamp(3.4rem, 8vw, 5.2rem);
   font-style: italic;
   font-weight: 400;
-  line-height: 1;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.presentation-number.is-placeholder {
+  color: var(--pv-mist);
+  font-style: normal;
+  font-size: clamp(3rem, 7vw, 4.4rem);
+}
+
+.presentation-panel.has-result .presentation-number {
+  text-shadow: 0 8px 32px var(--pv-orange-glow);
+}
+
+.presentation-unit {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.presentation-panel.has-result .presentation-unit {
+  color: var(--pv-navy-soft);
+}
+
+.presentation-headline {
+  margin: 0 0 12px;
+  color: var(--pv-navy);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.presentation-panel.has-result .presentation-headline {
+  color: var(--pv-orange);
+  font-size: 1.05rem;
+  font-weight: 500;
 }
 
 .presentation-copy,
 .muted {
+  margin: 0;
   color: var(--text-muted);
   font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.presentation-panel.has-result .presentation-copy {
+  color: var(--text-secondary);
 }
 
 .pipeline-flow {
