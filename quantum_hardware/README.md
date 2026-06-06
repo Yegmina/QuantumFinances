@@ -1,4 +1,4 @@
-# QuantumFinances Hardware Preparation
+# **Q-Fin** Hardware Preparation
 
 This folder prepares a QuantumFinances scenario run for real quantum-computer execution.
 
@@ -6,13 +6,15 @@ Default behavior is intentionally dry-run. A real hardware job is submitted only
 
 ## Provider Targets
 
-| Target | Status | Use |
-| --- | --- | --- |
-| IBM Quantum | Ready | Qiskit Runtime `SamplerV2` hardware submission with a tiny circuit and saved receipt. |
-| IQM Quantum Stack | Ready | Qiskit-on-IQM submission when the hackathon IQM endpoint and quantum computer name are available. |
-| QMill Platform | Package ready | Exports QASM, manifest, and input payload for QMill upload/compression workflows. |
-| LUMI Supercomputer | Classical support | Use for large parameter sweeps or preprocessing, not as a QPU target. |
-| Google AI Studio | Not quantum hardware | Useful for product AI, not for quantum circuit execution. |
+
+| Target             | Status               | Use                                                                                               |
+| ------------------ | -------------------- | ------------------------------------------------------------------------------------------------- |
+| IBM Quantum        | Ready                | Qiskit Runtime `SamplerV2` hardware submission with a tiny circuit and saved receipt.             |
+| IQM Quantum Stack  | Ready                | Qiskit-on-IQM submission when the hackathon IQM endpoint and quantum computer name are available. |
+| QMill Platform     | Package ready        | Exports QASM, manifest, and input payload for QMill upload/compression workflows.                 |
+| LUMI Supercomputer | Classical support    | Use for large parameter sweeps or preprocessing, not as a QPU target.                             |
+| Google AI Studio   | Not quantum hardware | Useful for product AI, not for quantum circuit execution.                                         |
+
 
 ## 1. Create A Hardware Payload
 
@@ -172,3 +174,4 @@ Only show a run as real hardware when the saved receipt includes:
 - circuit fingerprint,
 - input run id,
 - raw counts or a provider result reference.
+

@@ -1,4 +1,4 @@
-# QuantumFinances
+# Q-Fin
 
 Standalone scenario engine for market intelligence snapshots, PESTEL vectors, future scenario branches, event probability scoring, and quantum circuit receipts.
 

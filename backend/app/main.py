@@ -25,7 +25,7 @@ from app.services.run_store import get_run, save_run
 from app.services.source_adapter import SourceAdapter
 
 app = FastAPI(
-    title="QuantumFinances Scenario Engine",
+    title="Q-Fin Scenario Engine",
     version="0.1.0",
     description="Standalone market intelligence -> PESTEL -> temporal scenario -> quantum receipt API.",
 )
@@ -43,6 +43,17 @@ def adapter(settings: Annotated[Settings, Depends(get_settings)]) -> SourceAdapt
     return SourceAdapter(settings)
 
 
+@app.get("/")
+async def root():
+    return {
+        "service": "Q-Fin Scenario Engine API",
+        "docs": "/docs",
+        "health": "/api/health",
+        "frontend": "http://127.0.0.1:5179",
+        "message": "Open the frontend URL in your browser. This port serves the API only.",
+    }
+
+
 @app.get("/api/health")
 async def health(settings: Annotated[Settings, Depends(get_settings)]):
     return {
@@ -52,7 +63,7 @@ async def health(settings: Annotated[Settings, Depends(get_settings)]):
         "sourceConfigured": settings.has_external_source,
         "sourceBaseUrl": settings.source_base_url,
         "engineConfigured": True,
-        "engineMode": "QuantumFinances pipeline",
+        "engineMode": "Q-Fin pipeline",
     }
 
 

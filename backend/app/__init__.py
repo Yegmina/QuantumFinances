@@ -1,1 +1,1 @@
-"""QuantumFinances standalone scenario backend."""
+"""Q-Fin standalone scenario backend."""
