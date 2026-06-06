@@ -568,7 +568,10 @@ h3 {
 
 .pipeline-viz-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-areas:
+    "branches branches branches result result result"
+    "clusters clusters vectors vectors event event";
   gap: 12px;
   margin-top: 20px;
 }
@@ -582,7 +585,24 @@ h3 {
 }
 
 .vector-block {
+  grid-area: vectors;
   overflow-x: auto;
+}
+
+.cluster-block {
+  grid-area: clusters;
+}
+
+.branch-block {
+  grid-area: branches;
+}
+
+.event-match-block {
+  grid-area: event;
+}
+
+.result-block {
+  grid-area: result;
 }
 
 .viz-block h3 {
@@ -987,6 +1007,10 @@ pre {
 
   .pipeline-viz-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "branches result"
+      "clusters vectors"
+      "event event";
   }
 
   .quantum-panel {
@@ -1011,6 +1035,15 @@ pre {
   .similarity-row,
   .counts div {
     grid-template-columns: 1fr;
+  }
+
+  .pipeline-viz-grid {
+    grid-template-areas:
+      "branches"
+      "result"
+      "clusters"
+      "vectors"
+      "event";
   }
 
   .vector-matrix {
