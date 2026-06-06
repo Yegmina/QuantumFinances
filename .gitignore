@@ -12,8 +12,11 @@ node_modules/
 dist/
 coverage/
 .playwright-cli/
+tmp/
 *.log
 *.pyc
+paper/build/*.aux
+paper/build/*.out
 quantum_hardware/inputs/latest_run.json
 quantum_hardware/receipts/*
 !quantum_hardware/receipts/.gitkeep

@@ -1,0 +1,568 @@
+{
+  "createdAt": "2026-06-06T17:26:28.365818+00:00",
+  "input": "quantum_hardware/inputs/latest_run.json",
+  "records": [
+    {
+      "circuitDepth": 15,
+      "counts": {},
+      "hardwareJobSubmitted": false,
+      "hardwareProbabilities": {
+        "aligned_down": 0.0,
+        "aligned_up": 0.0,
+        "stable": 0.0,
+        "uncertain": 0.0
+      },
+      "inferenceProbabilities": {
+        "aligned_down": 0.10780700633376132,
+        "aligned_up": 0.2548041805176826,
+        "stable": 0.5013910107367212,
+        "uncertain": 0.13599780241183496
+      },
+      "iterations": 60,
+      "jobId": "",
+      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_94c9532c422ce08e.json",
+      "returnCode": 0,
+      "seed": 41,
+      "shots": 64,
+      "stderr": "",
+      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_94c9532c422ce08e.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.207295371806547
+        },
+        {
+          "iteration": 10,
+          "loss": 1.207295371806547
+        },
+        {
+          "iteration": 20,
+          "loss": 1.207295371806547
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2071478163802225
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2034705283875593
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2014681416368367
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1996250117402243
+        }
+      ],
+      "transpiledDepth": 0
+    },
+    {
+      "circuitDepth": 15,
+      "counts": {},
+      "hardwareJobSubmitted": false,
+      "hardwareProbabilities": {
+        "aligned_down": 0.0,
+        "aligned_up": 0.0,
+        "stable": 0.0,
+        "uncertain": 0.0
+      },
+      "inferenceProbabilities": {
+        "aligned_down": 0.10780700633376132,
+        "aligned_up": 0.2548041805176826,
+        "stable": 0.5013910107367212,
+        "uncertain": 0.13599780241183496
+      },
+      "iterations": 60,
+      "jobId": "",
+      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_94c9532c422ce08e.json",
+      "returnCode": 0,
+      "seed": 41,
+      "shots": 128,
+      "stderr": "",
+      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_94c9532c422ce08e.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.207295371806547
+        },
+        {
+          "iteration": 10,
+          "loss": 1.207295371806547
+        },
+        {
+          "iteration": 20,
+          "loss": 1.207295371806547
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2071478163802225
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2034705283875593
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2014681416368367
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1996250117402243
+        }
+      ],
+      "transpiledDepth": 0
+    },
+    {
+      "circuitDepth": 15,
+      "counts": {},
+      "hardwareJobSubmitted": false,
+      "hardwareProbabilities": {
+        "aligned_down": 0.0,
+        "aligned_up": 0.0,
+        "stable": 0.0,
+        "uncertain": 0.0
+      },
+      "inferenceProbabilities": {
+        "aligned_down": 0.08068918126864677,
+        "aligned_up": 0.2623303909705161,
+        "stable": 0.5137325169890188,
+        "uncertain": 0.14324791077181845
+      },
+      "iterations": 60,
+      "jobId": "",
+      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_660a54b86534f27a.json",
+      "returnCode": 0,
+      "seed": 42,
+      "shots": 64,
+      "stderr": "",
+      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_660a54b86534f27a.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.2210106014837414
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2167458718766606
+        },
+        {
+          "iteration": 20,
+          "loss": 1.214161041372983
+        },
+        {
+          "iteration": 30,
+          "loss": 1.1992550466177088
+        },
+        {
+          "iteration": 40,
+          "loss": 1.1992550466177088
+        },
+        {
+          "iteration": 50,
+          "loss": 1.1992550466177088
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1992550466177088
+        }
+      ],
+      "transpiledDepth": 0
+    },
+    {
+      "circuitDepth": 15,
+      "counts": {},
+      "hardwareJobSubmitted": false,
+      "hardwareProbabilities": {
+        "aligned_down": 0.0,
+        "aligned_up": 0.0,
+        "stable": 0.0,
+        "uncertain": 0.0
+      },
+      "inferenceProbabilities": {
+        "aligned_down": 0.08068918126864677,
+        "aligned_up": 0.2623303909705161,
+        "stable": 0.5137325169890188,
+        "uncertain": 0.14324791077181845
+      },
+      "iterations": 60,
+      "jobId": "",
+      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_660a54b86534f27a.json",
+      "returnCode": 0,
+      "seed": 42,
+      "shots": 128,
+      "stderr": "",
+      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_660a54b86534f27a.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.2210106014837414
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2167458718766606
+        },
+        {
+          "iteration": 20,
+          "loss": 1.214161041372983
+        },
+        {
+          "iteration": 30,
+          "loss": 1.1992550466177088
+        },
+        {
+          "iteration": 40,
+          "loss": 1.1992550466177088
+        },
+        {
+          "iteration": 50,
+          "loss": 1.1992550466177088
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1992550466177088
+        }
+      ],
+      "transpiledDepth": 0
+    },
+    {
+      "circuitDepth": 15,
+      "counts": {},
+      "hardwareJobSubmitted": false,
+      "hardwareProbabilities": {
+        "aligned_down": 0.0,
+        "aligned_up": 0.0,
+        "stable": 0.0,
+        "uncertain": 0.0
+      },
+      "inferenceProbabilities": {
+        "aligned_down": 0.08083323012660215,
+        "aligned_up": 0.25884719393979466,
+        "stable": 0.49342493506344465,
+        "uncertain": 0.16689464087015857
+      },
+      "iterations": 60,
+      "jobId": "",
+      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_14cbd6ba798fffda.json",
+      "returnCode": 0,
+      "seed": 43,
+      "shots": 64,
+      "stderr": "",
+      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_14cbd6ba798fffda.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.2192497279919619
+        },
+        {
+          "iteration": 10,
+          "loss": 1.20579615853564
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2043034145102445
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2043034145102445
+        },
+        {
+          "iteration": 40,
+          "loss": 1.204096375835942
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2005960993456624
+        },
+        {
+          "iteration": 60,
+          "loss": 1.2005960993456624
+        }
+      ],
+      "transpiledDepth": 0
+    },
+    {
+      "circuitDepth": 15,
+      "counts": {},
+      "hardwareJobSubmitted": false,
+      "hardwareProbabilities": {
+        "aligned_down": 0.0,
+        "aligned_up": 0.0,
+        "stable": 0.0,
+        "uncertain": 0.0
+      },
+      "inferenceProbabilities": {
+        "aligned_down": 0.08083323012660215,
+        "aligned_up": 0.25884719393979466,
+        "stable": 0.49342493506344465,
+        "uncertain": 0.16689464087015857
+      },
+      "iterations": 60,
+      "jobId": "",
+      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_14cbd6ba798fffda.json",
+      "returnCode": 0,
+      "seed": 43,
+      "shots": 128,
+      "stderr": "",
+      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_14cbd6ba798fffda.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.2192497279919619
+        },
+        {
+          "iteration": 10,
+          "loss": 1.20579615853564
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2043034145102445
+        },
+        {
+          "iteration": 30,
+          "loss": 1.2043034145102445
+        },
+        {
+          "iteration": 40,
+          "loss": 1.204096375835942
+        },
+        {
+          "iteration": 50,
+          "loss": 1.2005960993456624
+        },
+        {
+          "iteration": 60,
+          "loss": 1.2005960993456624
+        }
+      ],
+      "transpiledDepth": 0
+    },
+    {
+      "circuitDepth": 15,
+      "counts": {},
+      "hardwareJobSubmitted": false,
+      "hardwareProbabilities": {
+        "aligned_down": 0.0,
+        "aligned_up": 0.0,
+        "stable": 0.0,
+        "uncertain": 0.0
+      },
+      "inferenceProbabilities": {
+        "aligned_down": 0.07399190070326894,
+        "aligned_up": 0.24387337179011148,
+        "stable": 0.5031784358786712,
+        "uncertain": 0.17895629162794843
+      },
+      "iterations": 60,
+      "jobId": "",
+      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_a147735a5b560024.json",
+      "returnCode": 0,
+      "seed": 44,
+      "shots": 64,
+      "stderr": "",
+      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_a147735a5b560024.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.2650266560605141
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2304892626853674
+        },
+        {
+          "iteration": 20,
+          "loss": 1.200874029803016
+        },
+        {
+          "iteration": 30,
+          "loss": 1.200874029803016
+        },
+        {
+          "iteration": 40,
+          "loss": 1.200874029803016
+        },
+        {
+          "iteration": 50,
+          "loss": 1.1997237380858539
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1992829625747632
+        }
+      ],
+      "transpiledDepth": 0
+    },
+    {
+      "circuitDepth": 15,
+      "counts": {},
+      "hardwareJobSubmitted": false,
+      "hardwareProbabilities": {
+        "aligned_down": 0.0,
+        "aligned_up": 0.0,
+        "stable": 0.0,
+        "uncertain": 0.0
+      },
+      "inferenceProbabilities": {
+        "aligned_down": 0.07399190070326894,
+        "aligned_up": 0.24387337179011148,
+        "stable": 0.5031784358786712,
+        "uncertain": 0.17895629162794843
+      },
+      "iterations": 60,
+      "jobId": "",
+      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_a147735a5b560024.json",
+      "returnCode": 0,
+      "seed": 44,
+      "shots": 128,
+      "stderr": "",
+      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_a147735a5b560024.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.2650266560605141
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2304892626853674
+        },
+        {
+          "iteration": 20,
+          "loss": 1.200874029803016
+        },
+        {
+          "iteration": 30,
+          "loss": 1.200874029803016
+        },
+        {
+          "iteration": 40,
+          "loss": 1.200874029803016
+        },
+        {
+          "iteration": 50,
+          "loss": 1.1997237380858539
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1992829625747632
+        }
+      ],
+      "transpiledDepth": 0
+    },
+    {
+      "circuitDepth": 15,
+      "counts": {},
+      "hardwareJobSubmitted": false,
+      "hardwareProbabilities": {
+        "aligned_down": 0.0,
+        "aligned_up": 0.0,
+        "stable": 0.0,
+        "uncertain": 0.0
+      },
+      "inferenceProbabilities": {
+        "aligned_down": 0.0938726976224256,
+        "aligned_up": 0.2617666687763082,
+        "stable": 0.4941718312467426,
+        "uncertain": 0.15018880235452362
+      },
+      "iterations": 60,
+      "jobId": "",
+      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_24d13e829a6e10cd.json",
+      "returnCode": 0,
+      "seed": 45,
+      "shots": 64,
+      "stderr": "",
+      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_24d13e829a6e10cd.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.2102879009126553
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2102879009126553
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2102879009126553
+        },
+        {
+          "iteration": 30,
+          "loss": 1.207857461555228
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2002545050237765
+        },
+        {
+          "iteration": 50,
+          "loss": 1.1997449188295501
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1993669508649027
+        }
+      ],
+      "transpiledDepth": 0
+    },
+    {
+      "circuitDepth": 15,
+      "counts": {},
+      "hardwareJobSubmitted": false,
+      "hardwareProbabilities": {
+        "aligned_down": 0.0,
+        "aligned_up": 0.0,
+        "stable": 0.0,
+        "uncertain": 0.0
+      },
+      "inferenceProbabilities": {
+        "aligned_down": 0.0938726976224256,
+        "aligned_up": 0.2617666687763082,
+        "stable": 0.4941718312467426,
+        "uncertain": 0.15018880235452362
+      },
+      "iterations": 60,
+      "jobId": "",
+      "receiptPath": "/mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_24d13e829a6e10cd.json",
+      "returnCode": 0,
+      "seed": 45,
+      "shots": 128,
+      "stderr": "",
+      "stdout": "IQM temporal QML dry-run receipt written: /mnt/c/Users/teres/PycharmProjects/q-oracle-scenario-sim/quantum_hardware/receipts/iqm_qml_24d13e829a6e10cd.json\nAdd --submit to run the trained QML inference circuit on IQM hardware.",
+      "trainingHistory": [
+        {
+          "iteration": 0,
+          "loss": 1.2102879009126553
+        },
+        {
+          "iteration": 10,
+          "loss": 1.2102879009126553
+        },
+        {
+          "iteration": 20,
+          "loss": 1.2102879009126553
+        },
+        {
+          "iteration": 30,
+          "loss": 1.207857461555228
+        },
+        {
+          "iteration": 40,
+          "loss": 1.2002545050237765
+        },
+        {
+          "iteration": 50,
+          "loss": 1.1997449188295501
+        },
+        {
+          "iteration": 60,
+          "loss": 1.1993669508649027
+        }
+      ],
+      "transpiledDepth": 0
+    }
+  ],
+  "submit": false,
+  "wait": false
+}

@@ -1,0 +1,26 @@
+{
+  "featureCircuit": {
+    "provider": "iqm",
+    "quantumComputer": "sirius",
+    "jobId": "019e9de2-2ab7-7653-9134-15e34fbe5926",
+    "shots": 128,
+    "counts": {
+      "00": 104,
+      "01": 7,
+      "10": 15,
+      "11": 2
+    }
+  },
+  "temporalQml": {
+    "provider": "iqm",
+    "quantumComputer": "sirius",
+    "jobId": "019e9de9-956e-7622-ace6-80049a84a06c",
+    "shots": 128,
+    "counts": {
+      "00": 53,
+      "01": 26,
+      "10": 32,
+      "11": 17
+    }
+  }
+}

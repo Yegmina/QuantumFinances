@@ -1,0 +1,68 @@
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+Class & Local QML & IQM hardware \\
+\midrule
+Stable & 49.4\% & 41.4\% \\
+Aligned Up & 26.2\% & 20.3\% \\
+Aligned Down & 9.4\% & 25.0\% \\
+Uncertain & 15.0\% & 13.3\% \\
+\bottomrule
+\end{tabular}
+\caption{Temporal QML scenario distribution. The local column is the statevector prediction after classical training; the hardware column is sampled from IQM Sirius.}
+\label{tab:qml-results}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+Dimension & Latest value \\
+\midrule
+Political & 41.3\% \\
+Economic & 41.4\% \\
+Social & 29.2\% \\
+Technological & 38.6\% \\
+Environmental & 37.9\% \\
+Legal & 41.4\% \\
+\bottomrule
+\end{tabular}
+\caption{Latest weekly PESTEL vector used for feature encoding.}
+\label{tab:pestel-latest}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+Bitstring & Count & Share \\
+\midrule
+00 & 53 & 41.4\% \\
+01 & 26 & 20.3\% \\
+10 & 32 & 25.0\% \\
+11 & 17 & 13.3\% \\
+\bottomrule
+\end{tabular}
+\caption{Raw IQM temporal-QML hardware counts.}
+\label{tab:counts}
+\end{table}
+
+\begin{table}[t]
+\centering
+\scriptsize
+\begin{tabular}{lp{0.38\columnwidth}r}
+\toprule
+Experiment & Job ID & Shots \\
+\midrule
+Feature circuit & 019e9de2-2ab7-7653-9134-15e34fbe5926 & 128 \\
+Temporal QML & 019e9de9-956e-7622-ace6-80049a84a06c & 128 \\
+\bottomrule
+\end{tabular}
+\caption{Verified IQM hardware jobs available at paper-generation time.}
+\label{tab:hardware-jobs}
+\end{table}
