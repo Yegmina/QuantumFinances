@@ -371,10 +371,14 @@ h3 {
 
 .results-grid {
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  align-items: stretch;
 }
 
-.quantum-panel {
-  grid-column: 1 / -1;
+.results-grid > .panel {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
 }
 
 .input-label {
