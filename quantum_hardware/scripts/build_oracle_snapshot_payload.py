@@ -4,11 +4,14 @@ import argparse
 import asyncio
 import hashlib
 import json
+import os
 import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urljoin
+from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -26,10 +29,20 @@ from app.services.quantum_emulator import create_quantum_receipt
 
 
 DATED_GRAPH_RE = re.compile(r"^graph_(\d{4}-\d{2}-\d{2})\.json$")
+DATE_IN_PATH_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
 
 
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def fetch_json(url: str, token: str | None = None, timeout: int = 120) -> Any:
+    headers = {"Accept": "application/json"}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    request = Request(url, headers=headers)
+    with urlopen(request, timeout=timeout) as response:
+        return json.loads(response.read().decode("utf-8"))
 
 
 def discover_dated_graphs(oracle_dir: Path) -> list[tuple[str, Path]]:
@@ -61,6 +74,49 @@ def build_series(snapshot_paths: list[tuple[str, Path]]):
     return series
 
 
+def graph_items_from_manifest(manifest: Any, snapshot_kind: str) -> list[dict[str, Any]]:
+    if isinstance(manifest, dict):
+        items = manifest.get(snapshot_kind) or manifest.get("snapshots") or []
+    else:
+        items = manifest
+    if not isinstance(items, list):
+        raise SystemExit(f"Manifest did not contain a list for {snapshot_kind!r}.")
+    return [item for item in items if isinstance(item, dict) and (item.get("value") or item.get("url") or item.get("path"))]
+
+
+def id_from_manifest_item(item: dict[str, Any], index: int) -> str:
+    raw = str(item.get("id") or item.get("value") or item.get("url") or item.get("path") or "")
+    match = DATE_IN_PATH_RE.search(raw)
+    if match:
+        return match.group(1)
+    return str(item.get("label") or f"snapshot-{index + 1}")
+
+
+def build_series_from_manifest(manifest_url: str, base_url: str, snapshot_kind: str, token: str | None):
+    manifest = fetch_json(manifest_url, token=token)
+    items = graph_items_from_manifest(manifest, snapshot_kind)
+    if not items:
+        raise SystemExit(f"No {snapshot_kind} snapshots found in {manifest_url}")
+
+    series = []
+    for index, item in enumerate(items):
+        raw_url = str(item.get("value") or item.get("url") or item.get("path"))
+        snapshot_url = urljoin(f"{base_url.rstrip('/')}/", raw_url)
+        snapshot_id = id_from_manifest_item(item, index)
+        label = str(item.get("label") or f"ORACLE {snapshot_id}")
+        snapshot = fetch_json(snapshot_url, token=token)
+        series.append(
+            extract_weekly_pestel(
+                snapshot_id=snapshot_id,
+                label=label,
+                snapshot=snapshot,
+                source="external",
+            )
+        )
+    series.sort(key=lambda item: item.weekId)
+    return series, items
+
+
 def source_connection(snapshot_paths: list[tuple[str, Path]], oracle_dir: Path) -> SourceConnection:
     return SourceConnection(
         mode="external",
@@ -71,6 +127,16 @@ def source_connection(snapshot_paths: list[tuple[str, Path]], oracle_dir: Path) 
             "Loaded the full locally available dated ORACLE graph snapshot set "
             f"from {oracle_dir}."
         ),
+    )
+
+
+def remote_source_connection(manifest_url: str, count: int) -> SourceConnection:
+    return SourceConnection(
+        mode="external",
+        baseUrl="https://oraakkeli.metropolia.fi",
+        manifestUrl=manifest_url,
+        snapshotCount=count,
+        message="Loaded ORACLE graph snapshots from the authenticated deployed ORACLE snapshot manifest.",
     )
 
 
@@ -88,9 +154,24 @@ def run_id_for(event_text: str, series: list[Any], quantum_run_id: str) -> str:
 
 
 async def create_run(args: argparse.Namespace) -> RunResponse:
-    oracle_dir = Path(args.oracle_dir)
-    snapshot_paths = discover_dated_graphs(oracle_dir)
-    series = build_series(snapshot_paths)
+    source = None
+    if args.manifest_url:
+        token = os.getenv(args.auth_token_env) if args.auth_token_env else None
+        if args.require_auth and not token:
+            raise SystemExit(f"{args.auth_token_env} is required for {args.manifest_url}")
+        series, manifest_items = build_series_from_manifest(
+            manifest_url=args.manifest_url,
+            base_url=args.base_url,
+            snapshot_kind=args.snapshot_kind,
+            token=token,
+        )
+        source = remote_source_connection(args.manifest_url, len(manifest_items))
+    else:
+        oracle_dir = Path(args.oracle_dir)
+        snapshot_paths = discover_dated_graphs(oracle_dir)
+        series = build_series(snapshot_paths)
+        source = source_connection(snapshot_paths, oracle_dir)
+
     payload = RunRequest(
         eventText=args.event,
         scenarioCount=args.scenario_count,
@@ -110,7 +191,7 @@ async def create_run(args: argparse.Namespace) -> RunResponse:
     quantum_run = create_quantum_receipt(series, scenarios, decision.shots, decision.seed)
     return RunResponse(
         runId=run_id_for(payload.eventText, series, quantum_run.localRunId),
-        sourceConnection=source_connection(snapshot_paths, oracle_dir),
+        sourceConnection=source,
         engineDecision=decision,
         weeklyPestelSeries=series,
         forecastScenarios=scenarios,
@@ -129,12 +210,17 @@ async def create_run(args: argparse.Namespace) -> RunResponse:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build latest_run.json from local dated ORACLE graph snapshots.")
+    parser = argparse.ArgumentParser(description="Build latest_run.json from local or deployed ORACLE graph snapshots.")
     parser.add_argument(
         "--oracle-dir",
         default=r"C:\Users\teres\PycharmProjects\oracle\frontend\public",
         help="Directory containing graph_YYYY-MM-DD.json ORACLE graph snapshots.",
     )
+    parser.add_argument("--manifest-url", help="Authenticated ORACLE snapshot manifest URL, e.g. https://oraakkeli.metropolia.fi/api/snapshots")
+    parser.add_argument("--base-url", default="https://oraakkeli.metropolia.fi", help="Base URL for manifest snapshot paths.")
+    parser.add_argument("--snapshot-kind", choices=["graph", "hierarchy"], default="graph")
+    parser.add_argument("--auth-token-env", default="ORACLE_AUTH_TOKEN", help="Environment variable containing ORACLE bearer token.")
+    parser.add_argument("--require-auth", action="store_true", help="Fail if auth token env var is missing.")
     parser.add_argument("--out", default=str(ROOT / "quantum_hardware" / "inputs" / "latest_run.json"))
     parser.add_argument("--event", default="Company becomes the biggest in its market after AI investment and market growth")
     parser.add_argument("--scenario-count", type=int, default=4)
