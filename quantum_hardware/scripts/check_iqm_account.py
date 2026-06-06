@@ -12,10 +12,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Check IQM Resonance credentials without submitting a job.")
     parser.add_argument("--server-url", default=os.getenv("IQM_SERVER_URL", DEFAULT_IQM_SERVER_URL))
     parser.add_argument("--quantum-computer", default=os.getenv("IQM_QUANTUM_COMPUTER", DEFAULT_IQM_QUANTUM_COMPUTER))
-    parser.add_argument("--token", default=os.getenv("IQM_TOKEN", ""))
+    parser.add_argument("--token", default="", help="Optional explicit token. Prefer IQM_TOKEN env var.")
     args = parser.parse_args()
 
-    if not args.token:
+    if not args.token and not os.getenv("IQM_TOKEN"):
         raise SystemExit("IQM_TOKEN is not set. Generate a token in IQM Resonance, then set IQM_TOKEN.")
 
     try:
@@ -27,7 +27,11 @@ def main() -> None:
         ) from exc
 
     try:
-        provider = IQMProvider(args.server_url, quantum_computer=args.quantum_computer, token=args.token)
+        provider_kwargs = {"quantum_computer": args.quantum_computer}
+        if args.token:
+            provider_kwargs["token"] = args.token
+            os.environ.pop("IQM_TOKEN", None)
+        provider = IQMProvider(args.server_url, **provider_kwargs)
         backend = provider.get_backend()
         print("IQM Resonance authentication OK.")
         print(f"Server: {args.server_url}")

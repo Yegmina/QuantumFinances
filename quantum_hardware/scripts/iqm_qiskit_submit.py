@@ -40,8 +40,8 @@ def main() -> None:
     parser.add_argument("--server-url", default=os.getenv("IQM_SERVER_URL", DEFAULT_IQM_SERVER_URL))
     parser.add_argument("--quantum-computer", default=os.getenv("IQM_QUANTUM_COMPUTER", DEFAULT_IQM_QUANTUM_COMPUTER))
     parser.add_argument("--backend", default=os.getenv("IQM_BACKEND", ""))
-    parser.add_argument("--token", default=os.getenv("IQM_TOKEN", ""))
-    parser.add_argument("--tokens-file", default=os.getenv("IQM_TOKENS_FILE", ""))
+    parser.add_argument("--token", default="", help="Optional explicit token. Prefer IQM_TOKEN env var.")
+    parser.add_argument("--tokens-file", default="", help="Optional explicit tokens file. Prefer IQM_TOKENS_FILE env var.")
     parser.add_argument("--optimization-level", type=int, default=1, choices=[0, 1, 2, 3])
     parser.add_argument("--measure-all", action="store_true")
     parser.add_argument("--dry-run", action="store_true", help="Build circuit and receipt without submitting.")
@@ -64,7 +64,7 @@ def main() -> None:
         "shots": args.shots,
         "serverUrlConfigured": bool(args.server_url),
         "quantumComputerConfigured": bool(args.quantum_computer),
-        "authConfigured": bool(args.token or args.tokens_file),
+        "authConfigured": bool(args.token or args.tokens_file or os.getenv("IQM_TOKEN") or os.getenv("IQM_TOKENS_FILE")),
         "requestedBackend": args.backend or None,
         "hardwareJobSubmitted": False,
         "circuitFingerprint": fingerprint,
@@ -82,7 +82,7 @@ def main() -> None:
 
     if not args.server_url:
         raise SystemExit("IQM_SERVER_URL or --server-url is required for submission.")
-    if not args.token and not os.getenv("IQM_TOKEN"):
+    if not args.token and not args.tokens_file and not os.getenv("IQM_TOKEN") and not os.getenv("IQM_TOKENS_FILE"):
         raise SystemExit("IQM_TOKEN is required for Resonance submission. Generate it in the IQM Resonance dashboard first.")
 
     from qiskit import transpile
@@ -93,8 +93,10 @@ def main() -> None:
         provider_kwargs["quantum_computer"] = args.quantum_computer
     if args.token:
         provider_kwargs["token"] = args.token
+        os.environ.pop("IQM_TOKEN", None)
     if args.tokens_file:
         provider_kwargs["tokens_file"] = args.tokens_file
+        os.environ.pop("IQM_TOKENS_FILE", None)
     provider = IQMProvider(args.server_url, **provider_kwargs)
     backend = provider.get_backend(args.backend) if args.backend else provider.get_backend()
     transpiled = transpile(circuit, backend=backend, optimization_level=args.optimization_level)
