@@ -11,6 +11,17 @@
 \usepackage{xcolor}
 
 \hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue}
+\captionsetup{font=small,skip=3pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{7pt plus 2pt minus 2pt}
+\setlength{\intextsep}{7pt plus 2pt minus 2pt}
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{5}
+\setcounter{totalnumber}{8}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.85}
 
 \title{\vspace{-1.0em}Q-ORACLE: Hardware-Executed Semantic Temporal Quantum Models for News-Driven Scenario Analysis}
 \author{Yehor Tereshchenko \\ Timofey Kruhlov \\ Nadiia Haidash \\ Ekaterina Petrova \\ Mika Hamalainen \\[0.35em] \small QuantumFinances / Q-ORACLE}
@@ -107,9 +118,9 @@ Only the trained inference circuit is submitted to the QPU.
 \section{Experimental Setup}
 The experiment uses the full available ORACLE graph snapshot archive exposed by the platform adapter: 42 dated weekly graph states spanning 2025-03-17 through 2026-05-31. Together these snapshots contain 1,254 weekly clusters and 17,307 graph links. The latest PESTEL vector is shown in Table~\ref{tab:pestel-latest}, and the weekly trajectory is plotted in Figure~\ref{fig:pestel}. The semantic embedding model is \texttt{intfloat/multilingual-e5-large-instruct}, producing 1024-dimensional vectors. We test latent circuit sizes \(d=\{8,10,12\}\), seeds \(\{41,42,43\}\), shot counts \(\{1024,2048\}\), two variational layers and 160 local training iterations.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/pestel_timeline.png}
+\includegraphics[width=0.96\columnwidth]{figures/pestel_timeline.png}
 \caption{Weekly PESTEL world-state vectors used by the experiment.}
 \label{fig:pestel}
 \end{figure}
@@ -122,9 +133,9 @@ All semantic circuits are submitted to IQM Sirius through the Qiskit-on-IQM stac
 \subsection{Compact PESTEL Baseline}
 The compact four-qubit temporal circuit was submitted once with 128 shots. The hardware sample distribution differs from the local statevector estimate, especially for the aligned-down branch. This is expected for a shallow circuit on noisy hardware with a small shot budget and is reported as a baseline rather than a calibrated event estimate.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/qml_local_vs_hardware.png}
+\includegraphics[width=0.94\columnwidth]{figures/qml_local_vs_hardware.png}
 \caption{Compact PESTEL QML baseline: local statevector distribution compared with IQM Sirius samples.}
 \label{fig:qmlcomparison}
 \end{figure}
@@ -132,16 +143,16 @@ The compact four-qubit temporal circuit was submitted once with 128 shots. The h
 \subsection{Semantic Embedding Hardware Batch}
 The semantic experiment submits 18 jobs: three latent sizes, three seeds and two shot counts. Table~\ref{tab:semantic-batch} summarizes mean hardware distributions by circuit size, while Table~\ref{tab:semantic-overall} gives the aggregate distribution. Across all semantic jobs, the largest branch is stable at \(32.9\%\), followed closely by event-aligned at \(30.9\%\). The 12-qubit setting has the highest event-aligned mean among the tested configurations.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/semantic_embedding_qml_batch.png}
+\includegraphics[width=0.94\columnwidth]{figures/semantic_embedding_qml_batch.png}
 \caption{Mean IQM Sirius distributions for 1024-dimensional semantic embeddings projected into 8-, 10- and 12-qubit circuits.}
 \label{fig:semanticbatch}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/semantic_embedding_qml_shots.png}
+\includegraphics[width=0.94\columnwidth]{figures/semantic_embedding_qml_shots.png}
 \caption{Event-aligned probability by latent circuit size and shot count.}
 \label{fig:semanticshots}
 \end{figure}

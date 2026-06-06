@@ -329,9 +329,9 @@ def write_tables(payload: dict[str, Any], feature_receipt: dict[str, Any], qml_r
     ]
 
     tex = r"""
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
-\small
+\scriptsize
 \begin{tabular}{lrr}
 \toprule
 Class & Local QML & IQM hardware \\
@@ -343,9 +343,9 @@ Class & Local QML & IQM hardware \\
 \label{tab:qml-results}
 \end{table}
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
-\small
+\scriptsize
 \begin{tabular}{lr}
 \toprule
 Dimension & Latest value \\
@@ -357,12 +357,12 @@ Dimension & Latest value \\
 \label{tab:pestel-latest}
 \end{table}
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \scriptsize
-\begin{tabular}{lp{0.50\columnwidth}}
+\begin{tabular}{lp{0.46\columnwidth}}
 \toprule
-Semantic embedding model & \path{intfloat/multilingual-e5-large-instruct} \\
+Semantic model & E5-large-instruct \\
 Embedding dimension & 1024 \\
 Hardware jobs & """ + str(semantic_jobs) + r""" \\
 Total hardware shots & """ + str(semantic_shots) + r""" \\
@@ -373,23 +373,23 @@ Latent qubits tested & """ + semantic_qubits + r""" \\
 \label{tab:semantic-config}
 \end{table}
 
-\begin{table*}[t]
+\begin{table}[!htbp]
 \centering
-\small
+\scriptsize
 \begin{tabular}{rrrrrrr}
 \toprule
-Qubits & Records & Shots & Stable & Event aligned & Event divergent & Uncertain \\
+Q & N & Shots & Stable & Align & Diverg. & Unc. \\
 \midrule
 """ + "\n".join(semantic_rows) + r"""
 \bottomrule
 \end{tabular}
-\caption{Mean IQM Sirius hardware distributions for the 1024-dimensional semantic-embedding QML batch.}
+\caption{Mean IQM Sirius distributions for the 1024-dimensional semantic-embedding QML batch.}
 \label{tab:semantic-batch}
-\end{table*}
+\end{table}
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
-\small
+\scriptsize
 \begin{tabular}{lr}
 \toprule
 Class & Overall mean \\
