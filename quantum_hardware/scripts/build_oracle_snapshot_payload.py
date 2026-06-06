@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import gzip
 import hashlib
 import json
 import os
 import re
 import sys
+import zlib
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -37,12 +39,18 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def fetch_json(url: str, token: str | None = None, timeout: int = 120) -> Any:
-    headers = {"Accept": "application/json"}
+    headers = {"Accept": "application/json", "Accept-Encoding": "gzip, deflate"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
     request = Request(url, headers=headers)
     with urlopen(request, timeout=timeout) as response:
-        return json.loads(response.read().decode("utf-8"))
+        data = response.read()
+        encoding = response.headers.get("Content-Encoding", "").lower()
+        if encoding == "gzip":
+            data = gzip.decompress(data)
+        elif encoding == "deflate":
+            data = zlib.decompress(data)
+        return json.loads(data.decode("utf-8"))
 
 
 def discover_dated_graphs(oracle_dir: Path) -> list[tuple[str, Path]]:
