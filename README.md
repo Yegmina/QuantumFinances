@@ -42,6 +42,22 @@ npm run dev -- --host 127.0.0.1 --port 5179
 
 Open `http://127.0.0.1:5179`.
 
+## Docker
+
+Build and run the full stack with Docker Compose:
+
+```powershell
+docker compose up --build
+```
+
+Open `http://127.0.0.1:8080`. The frontend is served by Nginx and proxies `/api` to the FastAPI backend. For production-style deployment:
+
+```powershell
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
+```
+
+See `docs/DOCKER_DEPLOY.md` for environment variables, health checks, and stop commands.
+
 ## External Snapshot Source
 
 Use a manifest:

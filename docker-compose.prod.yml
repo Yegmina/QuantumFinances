@@ -1,0 +1,8 @@
+services:
+  backend:
+    restart: always
+
+  frontend:
+    restart: always
+    ports:
+      - "${QFIN_WEB_PORT:-80}:80"
