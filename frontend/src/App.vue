@@ -60,7 +60,7 @@
           :disabled="running || !ready"
           @click="runEngine"
         >
-          {{ running ? "Analyzing scenarios…" : "Run scenario analysis" }}
+          {{ running ? "Analysing scenarios…" : "Run scenario analysis" }}
         </button>
       </article>
 
@@ -133,26 +133,6 @@
           </div>
         </article>
 
-        <article class="viz-block vector-block">
-          <p class="section-kicker">Vectors</p>
-          <h3>Weekly PESTEL matrix</h3>
-          <div class="vector-matrix">
-            <span></span>
-            <b v-for="key in pestelKeys" :key="key">{{ key.slice(0, 3) }}</b>
-            <template v-for="week in series" :key="week.weekId">
-              <strong>{{ week.weekId }}</strong>
-              <span
-                v-for="key in pestelKeys"
-                :key="`${week.weekId}-${key}`"
-                class="heat-cell"
-                :style="heatStyle(week.pestel[key])"
-              >
-                {{ formatPercent(week.pestel[key]) }}
-              </span>
-            </template>
-          </div>
-        </article>
-
         <article class="viz-block branch-block">
           <p class="section-kicker">Branches</p>
           <h3>Alternative futures</h3>
@@ -179,14 +159,23 @@
           <p v-else class="muted">Your event is scored against each scenario using weighted similarity.</p>
         </article>
 
-        <article class="viz-block result-block">
-          <p class="section-kicker">Result</p>
-          <h3>{{ result ? formatPercent(result.eventProbability.probability) : "—" }}</h3>
-          <p class="muted">{{ result ? result.eventProbability.explanation : "Combines scenario fit with event plausibility." }}</p>
-          <div v-if="result" class="score-formula">
-            <span>Vector fit</span><strong>{{ formatPercent(result.eventProbability.vectorFit) }}</strong>
-            <span>Plausibility</span><strong>{{ formatPercent(result.eventProbability.plausibilityFactor) }}</strong>
-            <span>Final</span><strong>{{ formatPercent(result.eventProbability.probability) }}</strong>
+        <article class="viz-block vector-block">
+          <p class="section-kicker">Vectors</p>
+          <h3>Weekly PESTEL matrix</h3>
+          <div class="vector-matrix">
+            <span></span>
+            <b v-for="key in pestelKeys" :key="key">{{ key.slice(0, 3) }}</b>
+            <template v-for="week in series" :key="week.weekId">
+              <strong>{{ week.weekId }}</strong>
+              <span
+                v-for="key in pestelKeys"
+                :key="`${week.weekId}-${key}`"
+                class="heat-cell"
+                :style="heatStyle(week.pestel[key])"
+              >
+                {{ formatPercent(week.pestel[key]) }}
+              </span>
+            </template>
           </div>
         </article>
       </div>
@@ -232,24 +221,6 @@
       </article>
 
       <article class="panel">
-        <p class="section-kicker">Event probability</p>
-        <h2>{{ formatPercent(result.eventProbability.probability) }}</h2>
-        <p class="muted">{{ result.eventProbability.explanation }}</p>
-        <div class="score-formula wide">
-          <span>Scenario vector fit</span><strong>{{ formatPercent(result.eventProbability.vectorFit) }}</strong>
-          <span>Event plausibility</span><strong>{{ formatPercent(result.eventProbability.plausibilityFactor) }}</strong>
-          <span>Final probability</span><strong>{{ formatPercent(result.eventProbability.probability) }}</strong>
-        </div>
-        <div class="similarity-list compact-details">
-          <div v-for="item in scenarioSimilarities" :key="item.scenarioId" class="similarity-row">
-            <span>{{ item.scenarioId }}</span>
-            <div class="bar"><span :style="{ width: formatPercent(item.similarity) }"></span></div>
-            <strong>{{ formatPercent(item.similarity) }}</strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="panel">
         <p class="section-kicker">Calibration</p>
         <h2>Analysis settings</h2>
         <p class="muted">{{ result.engineDecision.rationale }}</p>
@@ -264,6 +235,23 @@
             <em>{{ pestelLabels[key] }}</em>
             <div class="bar"><span :style="{ width: formatPercent(value) }"></span></div>
             <b>{{ value.toFixed(2) }}</b>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <p class="section-kicker">Event probability</p>
+        <h2>{{ formatPercent(result.eventProbability.probability) }}</h2>
+        <div class="score-formula wide">
+          <span>Scenario vector fit</span><strong>{{ formatPercent(result.eventProbability.vectorFit) }}</strong>
+          <span>Event plausibility</span><strong>{{ formatPercent(result.eventProbability.plausibilityFactor) }}</strong>
+          <span>Final probability</span><strong>{{ formatPercent(result.eventProbability.probability) }}</strong>
+        </div>
+        <div class="similarity-list compact-details">
+          <div v-for="item in scenarioSimilarities" :key="item.scenarioId" class="similarity-row">
+            <span>{{ item.scenarioId }}</span>
+            <div class="bar"><span :style="{ width: formatPercent(item.similarity) }"></span></div>
+            <strong>{{ formatPercent(item.similarity) }}</strong>
           </div>
         </div>
       </article>
@@ -291,9 +279,6 @@
       </article>
     </section>
 
-    <footer v-if="result" class="site-footer">
-      <strong>Quantum receipt</strong> — {{ result.integrity.message }}
-    </footer>
   </div>
 </template>
 

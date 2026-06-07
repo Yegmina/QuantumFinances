@@ -200,8 +200,7 @@ input[type="number"]:focus {
 }
 
 .hero,
-.panel,
-.site-footer {
+.panel {
   min-width: 0;
   max-width: 1180px;
   margin: 0 auto 20px;
@@ -570,8 +569,8 @@ h3 {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   grid-template-areas:
-    "branches branches branches result result result"
-    "clusters clusters vectors vectors event event";
+    "branches branches branches vectors vectors vectors"
+    "clusters clusters clusters event event event";
   gap: 12px;
   margin-top: 20px;
 }
@@ -586,7 +585,6 @@ h3 {
 
 .vector-block {
   grid-area: vectors;
-  overflow-x: auto;
 }
 
 .cluster-block {
@@ -599,10 +597,6 @@ h3 {
 
 .event-match-block {
   grid-area: event;
-}
-
-.result-block {
-  grid-area: result;
 }
 
 .viz-block h3 {
@@ -677,19 +671,26 @@ h3 {
 
 .vector-matrix {
   display: grid;
-  grid-template-columns: 76px repeat(6, minmax(44px, 1fr));
-  gap: 5px;
+  width: 100%;
+  grid-template-columns: minmax(50px, 0.8fr) repeat(6, minmax(0, 1fr));
+  gap: 4px;
   align-items: stretch;
 }
 
 .vector-matrix b,
 .vector-matrix strong,
 .heat-cell {
+  display: flex;
+  min-height: 28px;
   min-width: 0;
-  padding: 7px 6px;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 4px;
   border-radius: var(--radius-sm);
   font-size: 0.68rem;
+  line-height: 1.1;
   text-align: center;
+  white-space: nowrap;
 }
 
 .vector-matrix b,
@@ -701,6 +702,7 @@ h3 {
 
 .heat-cell {
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 .branch-stack,
@@ -738,15 +740,6 @@ h3 {
 
 .compact-row {
   grid-template-columns: 94px 1fr 42px;
-}
-
-.result-block h3 {
-  margin: 0 0 12px;
-  color: var(--pv-orange);
-  font-family: var(--font-display);
-  font-size: 2.8rem;
-  font-style: italic;
-  line-height: 1;
 }
 
 .timeline {
@@ -975,18 +968,6 @@ pre {
   word-break: break-word;
 }
 
-.site-footer {
-  padding: 20px 0 8px;
-  color: var(--text-muted);
-  font-size: 0.78rem;
-  text-align: center;
-}
-
-.site-footer strong {
-  color: var(--pv-navy-soft);
-  font-weight: 600;
-}
-
 @media (max-width: 960px) {
   .hero,
   .panel-heading {
@@ -1008,9 +989,8 @@ pre {
   .pipeline-viz-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
-      "branches result"
-      "clusters vectors"
-      "event event";
+      "branches vectors"
+      "clusters event";
   }
 
   .quantum-panel {
@@ -1040,22 +1020,22 @@ pre {
   .pipeline-viz-grid {
     grid-template-areas:
       "branches"
-      "result"
-      "clusters"
       "vectors"
+      "clusters"
       "event";
   }
 
   .vector-matrix {
-    grid-template-columns: 58px repeat(6, minmax(0, 1fr));
-    gap: 3px;
+    grid-template-columns: minmax(34px, 0.8fr) repeat(6, minmax(0, 1fr));
+    gap: 2px;
   }
 
   .vector-matrix b,
   .vector-matrix strong,
   .heat-cell {
-    padding: 6px 2px;
-    font-size: 0.6rem;
+    min-height: 24px;
+    padding: 4px 1px;
+    font-size: 0.54rem;
   }
 
   .presentation-number {
