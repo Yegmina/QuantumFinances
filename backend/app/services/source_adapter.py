@@ -8,9 +8,10 @@ from urllib.parse import urljoin
 import httpx
 
 from app.config import Settings
-from app.models import SourceConnection, SnapshotMeta
+from app.models import SourceConnection, SnapshotMeta, WeeklyPestelState
 
 SAMPLE_DIR = Path(__file__).resolve().parents[1] / "samples"
+ARCHIVE_RUN_PATH = Path(__file__).resolve().parents[1] / "archive" / "latest_run.json"
 
 
 class SourceAdapter:
@@ -19,15 +20,18 @@ class SourceAdapter:
 
     async def connection(self) -> SourceConnection:
         snapshots = await self.list_snapshots()
+        mode = "external" if self.settings.has_external_source else "archive" if self._has_archive() else "sample"
         return SourceConnection(
-            mode="external" if self.settings.has_external_source else "sample",
+            mode=mode,
             baseUrl=self.settings.source_base_url,
             manifestUrl=self.settings.source_snapshot_manifest_url,
             snapshotCount=len(snapshots),
             message=(
                 "Using configured external snapshot source."
                 if self.settings.has_external_source
-                else "Using bundled sample snapshots because no external source is configured."
+                else "Using bundled 42-week Q-FIN archive."
+                if mode == "archive"
+                else "Using bundled sample snapshots because no archive or external source is configured."
             ),
         )
 
@@ -48,6 +52,9 @@ class SourceAdapter:
                 for index, url in enumerate(self.settings.source_snapshot_urls)
             ]
 
+        if self._has_archive():
+            return self._archive_manifest()
+
         return self._sample_manifest()
 
     async def get_snapshot(self, snapshot_id: str) -> tuple[SnapshotMeta, dict[str, Any]]:
@@ -63,6 +70,9 @@ class SourceAdapter:
         return meta, await self._load_by_meta(meta)
 
     async def _load_by_meta(self, meta: SnapshotMeta) -> dict[str, Any]:
+        if meta.source == "archive":
+            state = next(item for item in self._archive_series_raw() if item["weekId"] == meta.id)
+            return self._snapshot_from_archive_state(state)
         if meta.source == "sample":
             manifest_item = next(item for item in self._sample_manifest_raw() if item["id"] == meta.id)
             return json.loads((SAMPLE_DIR / manifest_item["file"]).read_text(encoding="utf-8"))
@@ -98,6 +108,63 @@ class SourceAdapter:
 
     def _sample_manifest_raw(self) -> list[dict[str, str]]:
         return json.loads((SAMPLE_DIR / "snapshots.json").read_text(encoding="utf-8"))
+
+    def _has_archive(self) -> bool:
+        return ARCHIVE_RUN_PATH.exists()
+
+    def _archive_payload(self) -> dict[str, Any]:
+        return json.loads(ARCHIVE_RUN_PATH.read_text(encoding="utf-8"))
+
+    def _archive_series_raw(self) -> list[dict[str, Any]]:
+        return self._archive_payload().get("weeklyPestelSeries") or []
+
+    def _archive_manifest(self) -> list[SnapshotMeta]:
+        return [
+            SnapshotMeta(
+                id=str(item["weekId"]),
+                label=str(item.get("label") or item["weekId"]),
+                url=None,
+                source="archive",
+            )
+            for item in self._archive_series_raw()
+        ]
+
+    def archive_series(self, snapshot_ids: list[str] | None = None) -> list[WeeklyPestelState]:
+        states = self._archive_series_raw()
+        requested = set(snapshot_ids or [])
+        selected = [item for item in states if not requested or item.get("weekId") in requested]
+        if requested and len(selected) != len(requested):
+            found = {item.get("weekId") for item in selected}
+            missing = sorted(requested - found)
+            raise KeyError(f"Snapshot {', '.join(missing)} was not found")
+        return [WeeklyPestelState.model_validate({**item, "source": "archive"}) for item in selected]
+
+    def should_use_archive_series(self, snapshot_ids: list[str], snapshot_urls: list[str]) -> bool:
+        if snapshot_urls or self.settings.has_external_source or not self._has_archive():
+            return False
+        archive_ids = {item["weekId"] for item in self._archive_series_raw()}
+        return not snapshot_ids or set(snapshot_ids).issubset(archive_ids)
+
+    def _snapshot_from_archive_state(self, state: dict[str, Any]) -> dict[str, Any]:
+        graph = state.get("graph") or {}
+        sample_clusters = graph.get("sampleClusters") or []
+        return {
+            "id": state.get("weekId"),
+            "label": state.get("label"),
+            "precomputedPestel": state.get("pestel"),
+            "levels": {
+                "L2": {
+                    "clusterSizes": [cluster.get("clusterSize") or 1 for cluster in sample_clusters],
+                    "graph": {
+                        "nodes": [
+                            {"id": cluster.get("id", index), "text": cluster.get("text", "")}
+                            for index, cluster in enumerate(sample_clusters)
+                        ],
+                        "edges": graph.get("rawEdges") or [],
+                    },
+                }
+            },
+        }
 
     def _id_from_url(self, url: str, index: int) -> str:
         clean = url.rstrip("/").split("/")[-1].replace(".json", "")

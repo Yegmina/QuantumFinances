@@ -321,6 +321,13 @@ h3 {
   padding-bottom: 16px;
 }
 
+.panel-subtitle {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
 .snapshot-strip {
   display: flex;
   flex-wrap: wrap;

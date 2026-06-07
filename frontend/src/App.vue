@@ -27,6 +27,7 @@
         <div>
           <p class="section-kicker">Market periods</p>
           <h2>Select snapshots</h2>
+          <p class="panel-subtitle">{{ selectedSnapshotIds.length }} of {{ snapshots.length }} snapshots selected</p>
         </div>
         <button type="button" @click="loadInitialState">Refresh</button>
       </div>

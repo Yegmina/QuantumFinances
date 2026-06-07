@@ -91,6 +91,14 @@ async def source_snapshot(snapshot_id: str, source: Annotated[SourceAdapter, Dep
 
 
 async def build_series_from_request(payload: BuildSeriesRequest, source: SourceAdapter):
+    if source.should_use_archive_series(payload.snapshotIds, payload.snapshotUrls):
+        series = source.archive_series(payload.snapshotIds)
+        series.sort(key=lambda item: item.weekId)
+        return BuildSeriesResponse(
+            sourceConnection=await source.connection(),
+            weeklyPestelSeries=series,
+        )
+
     metas_and_snapshots = []
     if payload.snapshotUrls:
         for index, url in enumerate(payload.snapshotUrls):

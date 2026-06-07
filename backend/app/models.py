@@ -12,11 +12,11 @@ class SnapshotMeta(BaseModel):
     id: str
     label: str
     url: str | None = None
-    source: Literal["external", "sample"] = "sample"
+    source: Literal["external", "archive", "sample"] = "sample"
 
 
 class SourceConnection(BaseModel):
-    mode: Literal["external", "sample"]
+    mode: Literal["external", "archive", "sample"]
     baseUrl: str | None = None
     manifestUrl: str | None = None
     snapshotCount: int
@@ -39,7 +39,7 @@ class WeeklyPestelState(BaseModel):
     graph: dict[str, Any]
     clusterCount: int
     edgeCount: int
-    source: Literal["external", "sample"]
+    source: Literal["external", "archive", "sample"]
 
 
 class BuildSeriesRequest(BaseModel):

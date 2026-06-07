@@ -17,12 +17,12 @@ def test_health_reports_no_hardware_submission():
     assert body["hardwareJobSubmitted"] is False
 
 
-def test_sample_snapshot_listing():
+def test_archive_snapshot_listing():
     response = client.get("/api/source/snapshots")
     assert response.status_code == 200
     body = response.json()
-    assert body["sourceConnection"]["mode"] == "sample"
-    assert len(body["snapshots"]) >= 3
+    assert body["sourceConnection"]["mode"] == "archive"
+    assert len(body["snapshots"]) == 42
 
 
 def test_series_build_contract_and_normalization():
