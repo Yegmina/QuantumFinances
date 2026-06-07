@@ -2,7 +2,13 @@
 
 Standalone scenario engine for market intelligence snapshots, PESTEL vectors, future scenario branches, event probability scoring, and quantum circuit receipts.
 
-Q-FIN can run from bundled sample snapshots or from a configured external JSON snapshot source. No private upstream system is required for the public platform.
+Q-FIN can run from the bundled 42-week research archive or from a configured external JSON snapshot source. No private upstream system is required for the public platform.
+
+## License And Use Restriction
+
+This repository is proprietary pre-publication material. No permission is granted to use, copy, modify, publish, distribute, deploy, train on, benchmark with, or otherwise reuse the source code, research paper, figures, data, or generated artifacts without prior written permission from the copyright holders.
+
+See `LICENSE`.
 
 ## Structure
 
@@ -11,6 +17,7 @@ backend/           FastAPI scenario API
 frontend/          Vue 3 platform UI
 docs/              runbook and platform notes
 quantum_hardware/  IBM/IQM/QMill hardware preparation scripts
+paper/             Research paper source, figures, data, and compiled PDF
 ```
 
 ## Backend
@@ -73,7 +80,7 @@ or direct URLs:
 $env:SOURCE_SNAPSHOT_URLS="https://your-source-host/graph_2026_w21.json,https://your-source-host/graph_2026_w22.json"
 ```
 
-If no source is configured, the backend uses bundled sample snapshots.
+If no source is configured, the backend uses the bundled 42-week archive used for the research run.
 
 ## Tests
 

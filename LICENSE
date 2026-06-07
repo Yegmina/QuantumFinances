@@ -1,0 +1,35 @@
+Proprietary Pre-Publication License
+
+Copyright (c) 2026 QuantumFinances / Q-ORACLE authors.
+All rights reserved.
+
+This repository, including all source code, research text, figures, datasets,
+compiled papers, diagrams, scripts, configuration files, documentation, and
+related artifacts, is proprietary pre-publication material.
+
+No permission is granted to any person or organization to use, copy, reproduce,
+modify, merge, publish, distribute, sublicense, sell, host, deploy, train on,
+benchmark with, incorporate into another work, or otherwise exploit any part of
+this repository, in source or compiled form, without prior written permission
+from the copyright holders.
+
+Access to this repository, including access through GitHub, does not grant any
+license or transfer any intellectual property rights. Forking, cloning,
+downloading, citing substantial unpublished text, redistributing the paper,
+redistributing generated figures, or using the implementation for commercial,
+academic, public, or private projects is not permitted unless separately
+authorized in writing.
+
+The research paper and all related paper assets are pre-publication drafts.
+They may not be submitted, republished, adapted, or presented as derivative
+research by third parties without prior written permission.
+
+Third-party dependencies retain their own licenses. This license applies only
+to the original material in this repository and does not grant rights to any
+third-party software, models, APIs, services, trademarks, or datasets.
+
+THE MATERIAL IS PROVIDED FOR INTERNAL REVIEW ONLY AND WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, ACCURACY,
+OR AVAILABILITY. THE AUTHORS SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR
+OTHER LIABILITY ARISING FROM ACCESS TO OR USE OF THE MATERIAL.
