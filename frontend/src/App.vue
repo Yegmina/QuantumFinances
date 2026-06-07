@@ -105,7 +105,7 @@
       </div>
 
       <div class="pipeline-viz-grid">
-        <article class="viz-block">
+        <article class="viz-block cluster-block">
           <p class="section-kicker">Clusters</p>
           <h3>Source link graph</h3>
           <svg class="graph-svg" viewBox="0 0 320 180" role="img" aria-label="source graph cluster sketch">
@@ -153,7 +153,7 @@
           </div>
         </article>
 
-        <article class="viz-block">
+        <article class="viz-block branch-block">
           <p class="section-kicker">Branches</p>
           <h3>Alternative futures</h3>
           <div v-if="result" class="branch-stack">
@@ -166,7 +166,7 @@
           <p v-else class="muted">Run an analysis to explore future PESTEL states.</p>
         </article>
 
-        <article class="viz-block">
+        <article class="viz-block event-match-block">
           <p class="section-kicker">Event match</p>
           <h3>Interest vector similarity</h3>
           <div v-if="result" class="event-vector">
